@@ -1,2 +1,2 @@
 # LunalipseMP
-## Lunalipse Music Player, way of customization.
+Lunalipse Music Player, way of customization.
