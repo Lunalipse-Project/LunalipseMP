@@ -8,10 +8,10 @@ using System.Web;
 
 namespace NetEaseHijacker
 {
-    static class Utils
+    public static class Utils
     {
 
-        public static string GetEncodedParams(string src)
+        internal static string GetEncodedParams(string src)
         {
             return HttpUtility.UrlEncode(
                                 enc(
@@ -19,7 +19,7 @@ namespace NetEaseHijacker
                                     NeParams.RandomString
                                 ), Encoding.UTF8);
         }
-        static string enc(string src, string key)
+        internal static string enc(string src, string key)
         {
             byte[] data = Encoding.UTF8.GetBytes(src);
             byte[] skey = Encoding.UTF8.GetBytes(key);
@@ -37,6 +37,28 @@ namespace NetEaseHijacker
         public static string FormatE(this string p, params object[] s)
         {
             return string.Format(p, s);
+        }
+
+        public static string SizeCalc(long bytes)
+        {
+            double final = bytes;
+            string uit = "";
+            //Unit: B
+            if (final <= 1024)
+            {
+                uit = " B";
+            }
+            else if (final > 1024 && final <= 1024 * 1024)
+            {
+                final /= 1024;
+                uit = "KB";
+            }
+            else if (final > Math.Pow(1024, 2) && final <= Math.Pow(1024, 3))
+            {
+                final /= Math.Pow(1024, 2);
+                uit = "MB";
+            }
+            return Decimal.Round(new decimal(final), 2).ToString() + uit;
         }
     }
 }

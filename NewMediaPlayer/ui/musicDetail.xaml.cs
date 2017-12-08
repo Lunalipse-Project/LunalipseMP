@@ -1,6 +1,4 @@
-﻿using gMusic.MusicOL;
-using gMusic.util;
-using NetEaseHijacker;
+﻿using NetEaseHijacker;
 using NetEaseHijacker.Types;
 using System;
 using System.Threading;
@@ -8,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using NewMediaPlayer.Generic;
+using System.Threading.Tasks;
 
 namespace NewMediaPlayer.ui
 {
@@ -43,6 +42,7 @@ namespace NewMediaPlayer.ui
                         else
                         {
                             ChoosenUrl = hj.ParseDownloadURL(y.ResultData);
+                            
                         }
                         break;
                 }
@@ -52,7 +52,6 @@ namespace NewMediaPlayer.ui
             RegistEvent();
             ProccessDetail();
             hj.DownloadURL(md.id, md.bitrate.Possible((x) => x != 0).ToString());
-            
         }
 
         public void RegistEvent()
@@ -65,7 +64,7 @@ namespace NewMediaPlayer.ui
             {
                 Dispatcher.Invoke(new Action(() =>
                 {
-                    t = sizeCalc.Calc(x);
+                    t = Utils.SizeCalc(x);
                     status.Content = "正在下载：0MB / " + t;
                     total = x;
                     prgs.Maximum = x;
@@ -93,7 +92,7 @@ namespace NewMediaPlayer.ui
                 Dispatcher.Invoke(new Action(() =>
                 {
                     prec = x / total * 100d;
-                    status.Content = "正在下载：" + sizeCalc.Calc(x) + " / " + t;
+                    status.Content = "正在下载：" + Utils.SizeCalc(x) + " / " + t;
                     prgV.Content = decimal.Round(new decimal(prec), 1).ToString() + "%";
                     prgs.Value = x;
                 }));
@@ -109,11 +108,10 @@ namespace NewMediaPlayer.ui
                 album.Source = new BitmapImage(new Uri(md.al_pic));
                 singer.Content = md.ar_name;
                 bandName.Content = md.al_name;
-                string[] s = md.L_URL.Split('.');
-                fomate.Content = ext = s[s.Length - 1].ToUpperInvariant();
-                hsize.Content = sizeCalc.Calc(long.Parse(md.SIZE[0].ToString()));
-                msize.Content = sizeCalc.Calc(long.Parse(md.SIZE[1].ToString()));
-                lsize.Content = sizeCalc.Calc(long.Parse(md.SIZE[2].ToString()));
+                //fomate.Content = ext = s[s.Length - 1].ToUpperInvariant();
+                hsize.Content = Utils.SizeCalc(md.sizes[0]);
+                msize.Content = Utils.SizeCalc(md.sizes[1]);
+                lsize.Content = Utils.SizeCalc(md.sizes[2]);
             }));
         }
 
@@ -121,32 +119,38 @@ namespace NewMediaPlayer.ui
         {
             if (md == null) return;
             Button b = sender as Button;
-            string u = "";
+            int br = 0;
             long bv = 0;
             switch (b.Name)
             {
                 case "l":
-                    u = md.L_URL;
-                    bv = md.SIZE[2];
+                    bv = md.sizes[2];
+                    br = md.bitrate[2];
                     break;
                 case "m":
-                    u = md.M_URL;
-                    bv = md.SIZE[1];
+                    bv = md.sizes[1];
+                    br = md.bitrate[1];
                     break;
                 case "h":
-                    u = md.H_URL;
-                    bv = md.SIZE[0];
+                    bv = md.sizes[0];
+                    br = md.bitrate[0];
                     break;
             }
-            RunDownload(u, bv);
+            Task.Run(() =>
+            {
+                hj.DownloadURL(md.id, br.ToString()).Wait();
+                RunDownload(ChoosenUrl, bv);
+            });
         }
 
         public void RunDownload(string _u, long a)
         {
             Console.WriteLine(_u);
+            string[] tmp = _u.Split('.');
+            string ext = tmp[tmp.Length - 1];
             Thread t = new Thread(new ThreadStart(() =>
             {
-                der.DownloadFile(_u, String.Format(global.DOWNLOAD_SAVE_PATH + "/{0}.{1}", md.musicN.Replace(':', ' '), ext.ToLowerInvariant()), a);
+                der.DownloadFile(_u, String.Format(global.DOWNLOAD_SAVE_PATH + "/{0}.{1}", md.name, ext.ToLowerInvariant()), a);
             }));
             t.Start();
         }

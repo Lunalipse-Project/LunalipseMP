@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace gMusic.util
+namespace NetEaseHijacker
 {
     public class Downloader
     {
-        public delegate void ODF(bool gotError,Exception e);
+        public delegate void ODF(bool gotError, Exception e);
         public delegate void DataSetup(long d);
         public delegate void Update(long d);
         public event ODF OnDownloadFinish;
@@ -16,7 +20,7 @@ namespace gMusic.util
 
         public Downloader()
         {
-            
+
         }
         /// <summary>
         /// 下载文件
@@ -25,7 +29,7 @@ namespace gMusic.util
         /// <param name="filename">文件保存路径</param>
         /// <param name="prog"></param>
         /// <param name="label1"></param>
-        public void DownloadFile(string URL, string filename,long tb)
+        public void DownloadFile(string URL, string filename, long tb)
         {
             //wc.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0");
             //wc.DownloadFile(new Uri(URL), filename);
@@ -44,7 +48,7 @@ namespace gMusic.util
                 long totalDownloadedByte = 0;
                 byte[] by = new byte[1024];
                 int osize = 0;
-                while(totalDownloadedByte<totalBytes)
+                while (totalDownloadedByte < totalBytes)
                 {
                     osize = st.Read(by, 0, (int)by.Length);
                     while (osize > 0)
@@ -60,7 +64,7 @@ namespace gMusic.util
                 st.Close();
                 OnDownloadFinish(false, null);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 OnDownloadFinish(true, e);
             }
