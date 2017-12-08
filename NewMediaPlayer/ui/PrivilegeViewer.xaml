@@ -1,0 +1,33 @@
+﻿<Page x:Class="NewMediaPlayer.ui.PrivilegeViewer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NewMediaPlayer.ui"
+      mc:Ignorable="d" 
+      Width="301" Height="399"
+      Title="PrivilegeViewer">
+
+    <Grid>
+        <ListBox x:Name="prive" HorizontalAlignment="Left" Height="237" Margin="10,66,0,0" VerticalAlignment="Top" Width="281" Background="{x:Null}" BorderBrush="White" BorderThickness="0" SelectionChanged="prive_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0,0,0,0" Width="auto" BorderBrush="#FFFFFF">
+                        <Grid x:Name="g1" Width="auto">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Background="Transparent" Grid.Column="0" Margin="0,0,10,0" Height="24" Width="auto" x:Name="priv" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding Privilege}" Padding="5,3,5,5" Foreground="#DDD"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Margin="10,310,10,0" Height="80" VerticalAlignment="Top">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <TextBlock TextWrapping="Wrap" Foreground="#DDD" x:Name="desc"/>
+            </ScrollViewer>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Height="66" VerticalAlignment="Top" Width="301" Foreground="#DDD" FontSize="11" x:Name="desc_" TextWrapping="Wrap"/>
+    </Grid>
+</Page>

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40FDCB69-ADC6-4FB0-9349-18B9A8F13FCC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NewMediaPlayer</RootNamespace>
+    <AssemblyName>Lunalipse</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Lunaxisky.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSCore">
+      <HintPath>bin\Debug\CSCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FileSecurity">
+      <HintPath>..\FileSecurity\bin\Debug\FileSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="libgtmsic">
+      <HintPath>..\gMusic\gMusic\bin\Release\libgtmsic.dll</HintPath>
+    </Reference>
+    <Reference Include="libjson, Version=10.0.0.0, Culture=neutral, PublicKeyToken=45a90bdf4ce92f4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\gMusic\gMusic\bin\Release\libjson.dll</HintPath>
+    </Reference>
+    <Reference Include="liblpxsll">
+      <HintPath>..\LunalipseShell\bin\Debug\liblpxsll.dll</HintPath>
+    </Reference>
+    <Reference Include="libvdsktp">
+      <HintPath>..\..\classWork\VirtualDesktop-master\source\VirtualDesktop\bin\Release\libvdsktp.dll</HintPath>
+    </Reference>
+    <Reference Include="libvdsktpW">
+      <HintPath>..\..\classWork\VirtualDesktop-master\source\VirtualDesktop.WPF\bin\Release\libvdsktpW.dll</HintPath>
+    </Reference>
+    <Reference Include="NullStudio.Utils.Keyboardhook">
+      <HintPath>bin\Debug\NullStudio.Utils.Keyboardhook.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="cirspt.xaml.cs">
+      <DependentUpon>cirspt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controler\LunalipsContentUI.cs" />
+    <Compile Include="controler\MusicInfo.cs" />
+    <Compile Include="Dialog\LDailog.xaml.cs">
+      <DependentUpon>LDailog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Equalizer.xaml.cs">
+      <DependentUpon>Equalizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Error.xaml.cs">
+      <DependentUpon>Error.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="floating.xaml.cs">
+      <DependentUpon>floating.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Generic\CustomMode.cs" />
+    <Compile Include="Generic\Extended.cs" />
+    <Compile Include="Generic\ResourceHolder.cs" />
+    <Compile Include="Generic\U32.cs" />
+    <Compile Include="Generic\validationF.cs" />
+    <Compile Include="LogFile.cs" />
+    <Compile Include="Lunalipx\Command.cs" />
+    <Compile Include="Lunalipx\CompilerExt.cs" />
+    <Compile Include="Lunalipx\LPXException.cs" />
+    <Compile Include="Lunalipx\NewSyntax.cs" />
+    <Compile Include="Lunalipx\PRAGMA.cs" />
+    <Compile Include="Lunalipx\SyntaxParser.cs" />
+    <Compile Include="Lyric\lyricAsm.xaml.cs">
+      <DependentUpon>lyricAsm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lyric\LyricDecompiler.cs" />
+    <Compile Include="Lyric\LyricsDisplay.cs" />
+    <Compile Include="Lyric\LyricUnit.cs" />
+    <Compile Include="Music.xaml.cs">
+      <DependentUpon>Music.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="partial\MainWindow.cs" />
+    <Compile Include="partial\MW_Events.cs" />
+    <Compile Include="partial\SyntaxParser.cs" />
+    <Compile Include="PluginHoster\APIBridge.cs" />
+    <Compile Include="PluginHoster\I18NBridge.cs" />
+    <Compile Include="PluginHoster\PluginEntity.cs" />
+    <Compile Include="PluginHoster\PluginEvents.cs" />
+    <Compile Include="PluginHoster\PluginHelper.cs" />
+    <Compile Include="PluginHoster\PluginInfo.cs" />
+    <Compile Include="PluginHoster\Privileges.cs" />
+    <Compile Include="PluginHoster\UIDrawable.cs" />
+    <Compile Include="PropertyHelper.cs" />
+    <Compile Include="Shell\AutoShd.cs" />
+    <Compile Include="Shell\ConfigShell.cs" />
+    <Compile Include="Shell\LPXShell.cs" />
+    <Compile Include="Shell\LunalipseInterface.cs" />
+    <Compile Include="Shell\LunalipseShellFilter.cs" />
+    <Compile Include="Sound\BasicSpectrumProvider.cs" />
+    <Compile Include="Sound\CircularSpectrum.cs" />
+    <Compile Include="Sound\GUtil.cs" />
+    <Compile Include="Sound\InitializeFFT.cs" />
+    <Compile Include="Sound\ISpectrumProvider.cs" />
+    <Compile Include="Sound\LineSpectrum.cs" />
+    <Compile Include="Sound\PlaySound.cs" />
+    <Compile Include="Sound\ScalingStrategy.cs" />
+    <Compile Include="Sound\SpectrumBase.cs" />
+    <Compile Include="ui\colorPicker.xaml.cs">
+      <DependentUpon>colorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Dlg_PN.xaml.cs">
+      <DependentUpon>Dlg_PN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Heartbeater\Beater.cs" />
+    <Compile Include="ui\Heartbeater\Heart.cs" />
+    <Compile Include="ui\Heartbeater\Pacer.cs" />
+    <Compile Include="ui\LDlg_Tip.xaml.cs">
+      <DependentUpon>LDlg_Tip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\LShell.xaml.cs">
+      <DependentUpon>LShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\LyricPreview.xaml.cs">
+      <DependentUpon>LyricPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\musicDetail.xaml.cs">
+      <DependentUpon>musicDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\OLmusicLib.xaml.cs">
+      <DependentUpon>OLmusicLib.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\PluginManager.xaml.cs">
+      <DependentUpon>PluginManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\PrgCounter.xaml.cs">
+      <DependentUpon>PrgCounter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\PrivilegeViewer.xaml.cs">
+      <DependentUpon>PrivilegeViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Page Include="cirspt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controler\checkBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\LDailog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Equalizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Error.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="floating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lyric\lyricAsm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="global.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Music.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\colorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\Dlg_PN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\LDlg_Tip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\LShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\LyricPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\musicDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\OLmusicLib.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\PluginManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\PrgCounter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\PrivilegeViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Lunaxisky.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="res\Equestria.otf" />
+    <Resource Include="res\Minecraft.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bitbug_favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\I18N\I18N.csproj">
+      <Project>{a435566e-49a1-48bc-9342-b4cc26164a7e}</Project>
+      <Name>I18N</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LpxResource\LpxResource.csproj">
+      <Project>{E9E3D501-6E04-41DA-B458-5BD4C18E1D1B}</Project>
+      <Name>LpxResource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LunalipseAPI\LunalipseAPI.csproj">
+      <Project>{5ca9e904-b75e-422a-80b1-d969010fcda7}</Project>
+      <Name>LunalipseAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LunaNetCore\LunaNetCore.csproj">
+      <Project>{0370c0cb-20b3-4e1a-9f5f-1a846bc1c1b8}</Project>
+      <Name>LunaNetCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LunapxCompiler\LunapxCompiler.csproj">
+      <Project>{E9C8DC4C-DCBC-475D-BE89-A1EF96F085B4}</Project>
+      <Name>LunapxCompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NetEaseHijacker\NetEaseHijacker.csproj">
+      <Project>{C2D12E12-331A-4FE5-AC87-FC9377C594C5}</Project>
+      <Name>NetEaseHijacker</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

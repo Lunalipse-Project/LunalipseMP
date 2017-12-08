@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+                    xmlns:local="clr-namespace:Updater.res">
+    <Style x:Key="Equestria">
+        <Setter Property="TextElement.FontFamily" Value="#Equestria"/>
+    </Style>
+    <Style x:Key="Minecraft">
+        <Setter Property="TextElement.FontFamily" Value="#Minecraft"/>
+    </Style>
+</ResourceDictionary>

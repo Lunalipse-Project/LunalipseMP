@@ -1,0 +1,16 @@
+﻿<Page x:Class="NewMediaPlayer.ui.LDlg_Tip"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NewMediaPlayer.ui"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="LDlg_Tip" Width="438" Height="97.1">
+
+    <Grid>
+        <TextBlock x:Name="cnt" TextWrapping="Wrap" HorizontalAlignment="Left" Height="97" Text="TextBlock" VerticalAlignment="Top" Width="438" Foreground="White" Padding="10,5,0,0" FontFamily="Microsoft YaHei UI Light" MaxWidth="438" MaxHeight="66"/>
+        <Button x:Name="ok" Content="确   定" HorizontalAlignment="Left" Height="25" Margin="333,66,0,0" VerticalAlignment="Top" Width="97" Background="#FF222222" Foreground="White" BorderBrush="{x:Null}" Click="okClk"/>
+
+    </Grid>
+</Page>

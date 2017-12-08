@@ -1,0 +1,59 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="NewMediaPlayer.Music"
+        mc:Ignorable="d"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Title="Music" Height="525" Width="940" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="fonts.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Border CornerRadius="5" Height="auto" x:Name="bgi">
+            
+        </Border>
+        <Grid>
+            <Border CornerRadius="5" Height="auto" Background="#B2000000"></Border>
+            <!--<Border CornerRadius="8,8,8,8" Height="auto"></Border>-->
+            <Grid HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="128">
+                <Border CornerRadius="5,0,0,0" x:Name="logo">
+                    
+                </Border>
+            </Grid>
+            <Label Content="Lunalipse" HorizontalAlignment="Left" Height="86" Margin="79,-11,0,0" VerticalAlignment="Top" Width="338" Foreground="White" FontSize="72" Style="{DynamicResource Equestria}"/>
+            <ListBox x:Name="music" HorizontalAlignment="Left" Height="382" Margin="10,133,0,0" VerticalAlignment="Top" Width="475" Background="{x:Null}" Padding="0,2,0,0" SelectionChanged="music_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0,0,0,1" Width="445" BorderBrush="#FFFFFF">
+                            <Grid x:Name="g1" Width="auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="222.5"/>
+                                    <ColumnDefinition Width="222.5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Foreground="White" Background="Transparent" Grid.Column="0" Margin="15,5,15,5" Height="30" Width="auto" x:Name="SongN" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding MusicN}"/>
+                                <Label Foreground="White" Background="Transparent" Grid.Column="1" Margin="15,5,15,5" Height="30" Width="auto" x:Name="Artist" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding artist}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Ellipse Cursor="Hand" Fill="#B2FF2300" HorizontalAlignment="Left" Height="23" Margin="907,10,0,0" VerticalAlignment="Top" Width="23" MouseDown="EllipseMouseDown"/>
+            <TextBox x:Name="musicName" HorizontalAlignment="Left" Height="36" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Background="{x:Null}" BorderBrush="White" Foreground="White" BorderThickness="1" VerticalContentAlignment="Center" Padding="9,0,0,0" CaretBrush="White"/>
+            <Button Content="搜   索" HorizontalAlignment="Left" Margin="320,92,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="Button_Click"/>
+            <Label x:Name="loading" Visibility="Hidden" Content="Loading . . ." HorizontalAlignment="Left" Margin="134,302,0,0" VerticalAlignment="Top" Width="222" Height="44" Background="{x:Null}" Foreground="White" FontSize="24" Style="{DynamicResource Minecraft}" HorizontalContentAlignment="Center"/>
+            <Button x:Name="mode" Content="单    曲" HorizontalAlignment="Left" Margin="388,92,0,0" VerticalAlignment="Top" Width="97" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="ModeChange"/>
+            <Frame x:Name="CC" Content="Frame" HorizontalAlignment="Left" Height="422" Margin="490,92,0,0" VerticalAlignment="Top" Width="444" NavigationUIVisibility="Hidden"/>
+            <Ellipse x:Name="setting" Cursor="Hand" Fill="#B2337AB7" HorizontalAlignment="Left" Height="23" Margin="879,10,0,0" VerticalAlignment="Top" Width="23" MouseDown="setting_md"/>
+
+
+        </Grid>
+    </Grid>
+</Window>
