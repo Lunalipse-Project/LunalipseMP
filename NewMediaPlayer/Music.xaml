@@ -29,7 +29,8 @@
                 </Border>
             </Grid>
             <Label Content="Lunalipse" HorizontalAlignment="Left" Height="86" Margin="79,-11,0,0" VerticalAlignment="Top" Width="338" Foreground="White" FontSize="72" Style="{DynamicResource Equestria}"/>
-            <ListBox x:Name="music" HorizontalAlignment="Left" Height="382" Margin="10,133,0,0" VerticalAlignment="Top" Width="475" Background="{x:Null}" Padding="0,2,0,0" SelectionChanged="music_SelectionChanged">
+            <ListBox x:Name="music" HorizontalAlignment="Left" Height="382" Margin="10,133,0,0" VerticalAlignment="Top" Width="475" Background="{x:Null}" Padding="0,2,0,0" SelectionChanged="music_SelectionChanged"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="0,0,0,1" Width="445" BorderBrush="#FFFFFF">

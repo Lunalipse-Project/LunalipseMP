@@ -36,13 +36,14 @@ namespace NewMediaPlayer.ui
                         if(!firstOpen)
                         {
                             ChoosenUrl = hj.ParseDownloadURL(y.ResultData);
-                            Dispatcher.Invoke(() => prev.Source = new Uri(ChoosenUrl));
+                            string[] tmp = ChoosenUrl.Split('.');
+                            
+                            Dispatcher.Invoke(() => { prev.Source = new Uri(ChoosenUrl); fomate.Content = ext = tmp[tmp.Length - 1]; });
                             firstOpen = true;
                         }
                         else
                         {
                             ChoosenUrl = hj.ParseDownloadURL(y.ResultData);
-                            
                         }
                         break;
                 }
@@ -112,6 +113,7 @@ namespace NewMediaPlayer.ui
                 hsize.Content = Utils.SizeCalc(md.sizes[0]);
                 msize.Content = Utils.SizeCalc(md.sizes[1]);
                 lsize.Content = Utils.SizeCalc(md.sizes[2]);
+                Duration.Content = TimeSpan.FromMilliseconds(md.duration).ToString(@"hh\:mm\:ss");
             }));
         }
 
@@ -146,8 +148,6 @@ namespace NewMediaPlayer.ui
         public void RunDownload(string _u, long a)
         {
             Console.WriteLine(_u);
-            string[] tmp = _u.Split('.');
-            string ext = tmp[tmp.Length - 1];
             Thread t = new Thread(new ThreadStart(() =>
             {
                 der.DownloadFile(_u, String.Format(global.DOWNLOAD_SAVE_PATH + "/{0}.{1}", md.name, ext.ToLowerInvariant()), a);

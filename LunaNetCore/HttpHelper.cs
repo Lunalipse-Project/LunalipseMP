@@ -81,7 +81,7 @@ namespace LunaNetCore
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko";
                 request.Accept = "*/*";
-                request.Referer = "music.163.com";
+                request.Referer = "http://music.163.com/search/";
                 //设置代理UserAgent和超时
                 //request.UserAgent = userAgent;
                 request.Timeout = timeout;

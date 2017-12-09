@@ -1,21 +1,16 @@
-﻿using System.ComponentModel;
+﻿using NetEaseHijacker.Types;
+using System.ComponentModel;
 
 namespace NewMediaPlayer.controler
 {
     class MusicInfo : INotifyPropertyChanged
     {
-        string MusicName;
-        string Artist;
-        string _id;
+        public SDetail _sd;
         public string MusicN
         {
             get
             {
-                return MusicName;
-            }
-            set
-            {
-                MusicName = value;
+                return _sd.name;
             }
         }
 
@@ -23,11 +18,7 @@ namespace NewMediaPlayer.controler
         {
             get
             {
-                return Artist;
-            }
-            set
-            {
-                Artist = value;
+                return _sd.ar_name;
             }
         }
 
@@ -35,11 +26,7 @@ namespace NewMediaPlayer.controler
         {
             get
             {
-                return _id;
-            }
-            set
-            {
-                _id = value;
+                return _sd.id;
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

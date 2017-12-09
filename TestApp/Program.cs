@@ -66,7 +66,7 @@ namespace TestApp
 
         static void Main(string[] args)
         {
-            string l1 = enc("{\"id\":\"222\",\"c\":\"[{\\\"id\\\":\\\"222\\\"}]\",\"csrf_token\":\"\"}", "0CoJUm6Qyw8W8jud");
+            string l1 = enc("{\"s\":\"Daniel Ingram\",\"type\":\"1\",\"offset\":\"0\",\"total\":\"true\",\"limit\":\"30\",\"csrf_token\":\"\"}", "0CoJUm6Qyw8W8jud");
             Console.WriteLine();
             string rstr = "9QHGy1GtOmUBkN1c";
             LNetC lnc = new LNetC();
@@ -81,7 +81,7 @@ namespace TestApp
             lnc.OnAllQueueRequestCompletely += () => Console.WriteLine("OK");
             RBody r = new RBody()
             {
-                URL = "http://music.163.com/weapi/v3/song/detail?csrf_token=",
+                URL = "http://music.163.com/weapi/cloudsearch/get/web?csrf_token=",
                 RequestMethod = HttpMethod.POST
             };
 

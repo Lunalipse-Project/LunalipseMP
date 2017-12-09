@@ -23,18 +23,18 @@ namespace NetEaseHijacker
 
         //URL
 
-        public const string NE_SEARCH =   "http://music.163.com/weapi/search/suggest/web?csrf_token=";
+        public const string NE_SEARCH =   "http://music.163.com/weapi/cloudsearch/get/web?csrf_token=";
         public const string NE_DETAIL =   "http://music.163.com/weapi/v3/song/detail?csrf_token=";
         public const string NE_DOWNLOAD = "http://music.163.com/weapi/song/enhance/player/url?csrf_token=";
         public const string NE_LYRIC =    "http://music.163.com/weapi/song/lyric?csrf_token=";
 
         //Template
 
-        public static string SEARCH =   "{{\"s\":\"{0}\",\"limit\":\"{1}\",\"csrf_token\":\"\"}}";
+        //public static string SEARCH =   "{{\"s\":\"{0}\",\"limit\":\"{1}\",\"csrf_token\":\"\"}}";
         public static string DETAIL =   "{{\"id\":\"{0}\",\"c\":\"[{{\\\"id\\\":\\\"{0}\\\"}}]\",\"csrf_token\":\"\"}}";
         public static string DOWNLOAD = "{{\"ids\":\"[{0}]\",\"br\":{1},\"csrf_token\":\"\"}}";
         public static string LYRIC =    "{{\"id\":\"{0}\",\"lv\":-1,\"tv\":-1,\"csrf_token\":\"\"}}";
-
+        public static string SEARCH = "{{\"s\":\"{0}\",\"type\":\"1\",\"offset\":\"0\",\"total\":\"true\",\"limit\":\"{1}\",\"csrf_token\":\"\"}}";
         
     }
 }

@@ -20,7 +20,6 @@ namespace NewMediaPlayer
     /// </summary>
     public partial class Music : Window
     {
-        SDetail md;
         ResourceHolder RH;
         SearchType MODE = SearchType.SONGS;
         string MusicN_For_LRC = "";
@@ -51,10 +50,6 @@ namespace NewMediaPlayer
                         break;
                     case SearchType.LYRIC:
                         ShowLyric(par2);
-                        break;
-                    case SearchType.DETAIL:
-                        md = hj.ParseSongDetail(par2.ResultData);
-                        InvokeChangeContent(LunalipsContentUI.MUSIC_DETAIL, md);
                         break;
                 }
             });
@@ -110,10 +105,10 @@ namespace NewMediaPlayer
             this.Dispatcher.Invoke(new Action(() =>
             {
                 list.Clear();
-                List<SResult> ls = hj.ParseSongList(rr.ResultData);
+                List<SDetail> ls = hj.ParseSongList(rr.ResultData);
                 foreach (var b in ls)
                 {
-                    list.Add(new MusicInfo() { MusicN = b.name, artist = b.artist, ID = b.id });
+                    list.Add(new MusicInfo() {_sd = b });
                 }
                 music.ItemsSource = list;
             }));
@@ -156,7 +151,7 @@ namespace NewMediaPlayer
                 MusicInfo mi = music.SelectedItem as MusicInfo;
                 if (MODE!=SearchType.LYRIC)
                 {
-                    hj.SongDetail(mi.ID);
+                    InvokeChangeContent(LunalipsContentUI.MUSIC_DETAIL, mi._sd);
                     music.SelectedIndex = -1;
                     
                 }

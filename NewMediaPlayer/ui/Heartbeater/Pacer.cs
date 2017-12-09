@@ -59,21 +59,28 @@ namespace NewMediaPlayer.ui.Heartbeater
             if (t != null) return;
             t = new Thread(new ThreadStart(() => {
                 //循环检测心跳
-                while(true)
+                try
                 {
-                    foreach(var i in registed)
+                    while (true)
                     {
-                        //如果距离上次心跳时间小于规定时间（2秒）
-                        if ((DateTime.Now - i.Value.dt).TotalMilliseconds>TIME_OUT)
+                        foreach (var i in registed)
                         {
-                            //启用起搏器
-                            mw.Dispatcher.Invoke(() =>
+                            //如果距离上次心跳时间小于规定时间（2秒）
+                            if ((DateTime.Now - i.Value.dt).TotalMilliseconds > TIME_OUT)
                             {
-                                i.Value.fail.Invoke();
-                            });
+                                //启用起搏器
+                                mw.Dispatcher.Invoke(() =>
+                                {
+                                    i.Value.fail.Invoke();
+                                });
+                            }
                         }
+                        Thread.Sleep(TIME_OUT);
                     }
-                    Thread.Sleep(TIME_OUT);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }));
             t.Start();

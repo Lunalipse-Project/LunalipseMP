@@ -57,7 +57,6 @@
     <Compile Include="Raw.cs" />
     <Compile Include="SearchType.cs" />
     <Compile Include="Types\SDetail.cs" />
-    <Compile Include="Types\SResult.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

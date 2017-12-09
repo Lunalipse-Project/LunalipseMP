@@ -37,7 +37,7 @@ namespace NetEaseHijacker
             r.Event_TimeOut(() => e?.Invoke());
         }
 
-        public async Task SearchSong(string keyw, int limit = 8)
+        public async Task SearchSong(string keyw, int limit = 30)
         {
             await r.Get(SearchType.SONGS, keyw, limit.ToString());
         }
@@ -52,54 +52,36 @@ namespace NetEaseHijacker
             await r.Get(SearchType.DOWNLOAD, id, bitRate);
         }
 
-        public List<SResult> ParseSongList(string result)
+        public List<SDetail> ParseSongList(string result)
         {
             try
             {
                 JObject jo = JObject.Parse(result);
-                List<SResult> lsr = new List<SResult>();
+                List<SDetail> lsr = new List<SDetail>();
                 foreach (var v in jo["result"]["songs"])
                 {
-                    SResult sr = new SResult();
-                    sr.id = v["id"].ToString();
-                    sr.name = v["name"].ToString();
-                    sr.artist = v["artists"][0]["name"].ToString();
-                    lsr.Add(sr);
+                    SDetail sd = new SDetail();
+                    sd.id = v["id"].ToString();
+                    sd.name = v["name"].ToString();
+                    sd.al_pic = v["al"]["picUrl"].ToString();
+                    sd.ar_name = v["ar"][0]["name"].ToString();
+                    sd.al_name = v["al"]["name"].ToString();
+                    sd.duration = v["dt"].ToObject<long>();
+                    int i = 0;
+
+                    foreach (char c in "lmh")
+                    {
+                        string c_ = c.ToString();
+                        if (v[c_].HasValues)
+                        {
+                            sd.sizes[i] = Convert.ToInt64(v[c_]["size"].ToString());
+                            sd.bitrate[i] = Convert.ToInt32(v[c_]["br"].ToString());
+                            i++;
+                        }
+                    }
+                    lsr.Add(sd);
                 }
                 return lsr;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public SDetail ParseSongDetail(string result)
-        {
-            try
-            {
-                JObject jo = JObject.Parse(result);
-                if (!jo["songs"].HasValues) return null;
-                JToken jt= jo["songs"][0];
-                SDetail sd = new SDetail();
-                sd.id = jt["id"].ToString();
-                sd.name = jt["name"].ToString();
-                sd.al_pic = jt["al"]["picUrl"].ToString();
-                sd.ar_name = jt["ar"][0]["name"].ToString();
-                sd.al_name = jt["al"]["name"].ToString();
-                int i = 0;
-
-                foreach(char c in "lmh")
-                {
-                    string c_ = c.ToString();
-                    if(jt[c_].HasValues)
-                    {
-                        sd.sizes[i] = Convert.ToInt64(jt[c_]["size"].ToString());
-                        sd.bitrate[i] = Convert.ToInt32(jt[c_]["br"].ToString());
-                        i++;
-                    }
-                }
-                return sd;
             }
             catch
             {
