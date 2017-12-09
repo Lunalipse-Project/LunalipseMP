@@ -18,29 +18,31 @@
     </Window.Resources>
     <Grid>
         <Border CornerRadius="5" Height="auto" x:Name="bgi">
-            
+
         </Border>
         <Grid>
-            <Border CornerRadius="5" Height="auto" Background="#B2000000"></Border>
+            <Border CornerRadius="5" Height="auto" Background="#B2000000">
+            </Border>
+            <Label x:Name="pages" Content="Label" HorizontalAlignment="Left" Height="29" Margin="78,479,0,0" VerticalAlignment="Top" Width="339" Foreground="White" HorizontalContentAlignment="Center"/>
             <!--<Border CornerRadius="8,8,8,8" Height="auto"></Border>-->
             <Grid HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="128">
                 <Border CornerRadius="5,0,0,0" x:Name="logo">
-                    
+
                 </Border>
             </Grid>
             <Label Content="Lunalipse" HorizontalAlignment="Left" Height="86" Margin="79,-11,0,0" VerticalAlignment="Top" Width="338" Foreground="White" FontSize="72" Style="{DynamicResource Equestria}"/>
-            <ListBox x:Name="music" HorizontalAlignment="Left" Height="382" Margin="10,133,0,0" VerticalAlignment="Top" Width="475" Background="{x:Null}" Padding="0,2,0,0" SelectionChanged="music_SelectionChanged"
-                     ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox x:Name="music" HorizontalAlignment="Left" Height="346" Margin="10,128,0,0" VerticalAlignment="Top" Width="475" Background="{x:Null}" Padding="0,2,0,0" SelectionChanged="music_SelectionChanged"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="0,0,0,1" Width="445" BorderBrush="#FFFFFF">
+                        <Border BorderThickness="0,0,0,0" Width="445" BorderBrush="#FFFFFF">
                             <Grid x:Name="g1" Width="auto">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="222.5"/>
-                                    <ColumnDefinition Width="222.5"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Foreground="White" Background="Transparent" Grid.Column="0" Margin="15,5,15,5" Height="30" Width="auto" x:Name="SongN" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding MusicN}"/>
-                                <Label Foreground="White" Background="Transparent" Grid.Column="1" Margin="15,5,15,5" Height="30" Width="auto" x:Name="Artist" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding artist}"/>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition MaxHeight="30"></RowDefinition>
+                                    <RowDefinition MaxHeight="25"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Foreground="White" Background="Transparent" Grid.Row="0" Margin="15,5,15,5" Height="30" Width="auto" x:Name="SongN" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding MusicN}" FontSize="15" FontWeight="Bold"/>
+                                <Label Foreground="#CCD4D4D4" Background="Transparent" Grid.Row="1" Margin="15,-8,15,5" Height="25" Width="auto" x:Name="Artist" VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding artist}" FontSize="10"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
@@ -53,6 +55,8 @@
             <Button x:Name="mode" Content="单    曲" HorizontalAlignment="Left" Margin="388,92,0,0" VerticalAlignment="Top" Width="97" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="ModeChange"/>
             <Frame x:Name="CC" Content="Frame" HorizontalAlignment="Left" Height="422" Margin="490,92,0,0" VerticalAlignment="Top" Width="444" NavigationUIVisibility="Hidden"/>
             <Ellipse x:Name="setting" Cursor="Hand" Fill="#B2337AB7" HorizontalAlignment="Left" Height="23" Margin="879,10,0,0" VerticalAlignment="Top" Width="23" MouseDown="setting_md"/>
+            <Button x:Name="previous" Content="上一页" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="1,0,0,0" Click="PreviousPage"/>
+            <Button x:Name="next" Content="下一页" HorizontalAlignment="Left" Margin="417,474,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,1,0" Click="nextPage"/>
 
 
         </Grid>

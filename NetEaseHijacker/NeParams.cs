@@ -34,7 +34,7 @@ namespace NetEaseHijacker
         public static string DETAIL =   "{{\"id\":\"{0}\",\"c\":\"[{{\\\"id\\\":\\\"{0}\\\"}}]\",\"csrf_token\":\"\"}}";
         public static string DOWNLOAD = "{{\"ids\":\"[{0}]\",\"br\":{1},\"csrf_token\":\"\"}}";
         public static string LYRIC =    "{{\"id\":\"{0}\",\"lv\":-1,\"tv\":-1,\"csrf_token\":\"\"}}";
-        public static string SEARCH = "{{\"s\":\"{0}\",\"type\":\"1\",\"offset\":\"0\",\"total\":\"true\",\"limit\":\"{1}\",\"csrf_token\":\"\"}}";
+        public static string SEARCH = "{{\"s\":\"{0}\",\"type\":\"1\",\"offset\":\"{3}\",\"total\":\"{2}\",\"limit\":\"{1}\",\"csrf_token\":\"\"}}";
         
     }
 }

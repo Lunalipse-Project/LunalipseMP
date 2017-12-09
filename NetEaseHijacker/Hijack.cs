@@ -37,9 +37,9 @@ namespace NetEaseHijacker
             r.Event_TimeOut(() => e?.Invoke());
         }
 
-        public async Task SearchSong(string keyw, int limit = 30)
+        public async Task SearchSong(string keyw, int limit = 30, int offset = 0)
         {
-            await r.Get(SearchType.SONGS, keyw, limit.ToString());
+            await r.Get(SearchType.SONGS, keyw, limit.ToString(), (offset == 0 ? true : false).ToString().ToLowerInvariant(), offset+"");
         }
 
         public async Task SongDetail(string id)
@@ -52,12 +52,17 @@ namespace NetEaseHijacker
             await r.Get(SearchType.DOWNLOAD, id, bitRate);
         }
 
-        public List<SDetail> ParseSongList(string result)
+        public MetadataNE ParseSongList(string result)
         {
             try
             {
                 JObject jo = JObject.Parse(result);
-                List<SDetail> lsr = new List<SDetail>();
+                MetadataNE mne = new MetadataNE()
+                {
+                    total = jo["result"]["songCount"].ToObject<int>(),
+                    list = new List<SDetail>()
+                };
+                
                 foreach (var v in jo["result"]["songs"])
                 {
                     SDetail sd = new SDetail();
@@ -79,9 +84,9 @@ namespace NetEaseHijacker
                             i++;
                         }
                     }
-                    lsr.Add(sd);
+                    mne.list.Add(sd);
                 }
-                return lsr;
+                return mne;
             }
             catch
             {

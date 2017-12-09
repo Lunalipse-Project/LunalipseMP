@@ -12,6 +12,7 @@ namespace NetEaseHijacker.Types
         //Store as <bitRate>|<size>
         public long[] sizes = new long[3];
         public int[] bitrate = new int[3];
+        public int totalCount = 0;
         /// <summary>
         /// In millisecond
         /// </summary>

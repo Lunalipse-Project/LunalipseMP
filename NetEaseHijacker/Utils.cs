@@ -60,5 +60,10 @@ namespace NetEaseHijacker
             }
             return Decimal.Round(new decimal(final), 2).ToString() + uit;
         }
+
+        public static int Paging(double total,double each = 30d)
+        {
+            return Convert.ToInt32(Math.Ceiling(total / each));
+        }
     }
 }

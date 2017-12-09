@@ -22,7 +22,9 @@ namespace NewMediaPlayer
     {
         ResourceHolder RH;
         SearchType MODE = SearchType.SONGS;
-        string MusicN_For_LRC = "";
+        string MusicN_For_LRC = "", kw = "";
+        bool reset = true;
+        int totalPages = 1, curPage = 0, offset = 0;
         Hijack hj;
 
         string[] MODE_SET = new string[]
@@ -105,8 +107,17 @@ namespace NewMediaPlayer
             this.Dispatcher.Invoke(new Action(() =>
             {
                 list.Clear();
-                List<SDetail> ls = hj.ParseSongList(rr.ResultData);
-                foreach (var b in ls)
+                MetadataNE ls = hj.ParseSongList(rr.ResultData);
+                if(reset)
+                {
+                    totalPages = Utils.Paging(ls.total);
+                    curPage = 1;
+                    offset = 0;
+                    pages.Content = "{0} - {1}".FormatE(curPage, totalPages);
+                    previous.Visibility = Visibility.Hidden;
+                    reset = false;
+                }
+                foreach (var b in ls.list)
                 {
                     list.Add(new MusicInfo() {_sd = b });
                 }
@@ -133,10 +144,11 @@ namespace NewMediaPlayer
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             (sender as Button).IsEnabled = false;
-            string s = musicName.Text;
+            kw = musicName.Text;
             if(MODE== SearchType.SONGS)
             {
-                hj.SearchSong(s);
+                reset = true;
+                hj.SearchSong(kw);
             }
             else
             {
@@ -171,8 +183,50 @@ namespace NewMediaPlayer
             (sender as Button).Content = MODE_SET[MODE == SearchType.SONGS ? 0 : 1];
         }
 
+        
+
         private void Window_Closed(object sender, EventArgs e)
         {
+        }
+
+        private void PreviousPage(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            curPage--;
+            hj.SearchSong(kw, 30, offset -= 30);
+            pages.Content = "{0} - {1}".FormatE(curPage, totalPages);
+            if (curPage <= 1)
+            {
+                b.Visibility = Visibility.Hidden;
+                return;
+            }
+            else b.Visibility = Visibility.Visible;
+            if (curPage >= totalPages)
+            {
+                next.Visibility = Visibility.Hidden;
+                return;
+            }
+            else next.Visibility = Visibility.Visible;
+        }
+
+        private void nextPage(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            curPage++;
+            hj.SearchSong(kw, 30, offset += 30);
+            pages.Content = "{0} - {1}".FormatE(curPage, totalPages);
+            if (curPage >= totalPages)
+            {
+                b.Visibility = Visibility.Hidden;
+                return;
+            }
+            else b.Visibility = Visibility.Visible;
+            if (curPage <= 1)
+            {
+                previous.Visibility = Visibility.Hidden;
+                return;
+            }
+            else previous.Visibility = Visibility.Visible;
         }
 
         private void setting_md(object sender, System.Windows.Input.MouseButtonEventArgs e)

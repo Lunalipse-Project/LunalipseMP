@@ -110,9 +110,9 @@ namespace NewMediaPlayer.ui
                 singer.Content = md.ar_name;
                 bandName.Content = md.al_name;
                 //fomate.Content = ext = s[s.Length - 1].ToUpperInvariant();
-                hsize.Content = Utils.SizeCalc(md.sizes[0]);
+                hsize.Content = Utils.SizeCalc(md.sizes[2]);
                 msize.Content = Utils.SizeCalc(md.sizes[1]);
-                lsize.Content = Utils.SizeCalc(md.sizes[2]);
+                lsize.Content = Utils.SizeCalc(md.sizes[0]);
                 Duration.Content = TimeSpan.FromMilliseconds(md.duration).ToString(@"hh\:mm\:ss");
             }));
         }
@@ -126,16 +126,16 @@ namespace NewMediaPlayer.ui
             switch (b.Name)
             {
                 case "l":
-                    bv = md.sizes[2];
-                    br = md.bitrate[2];
+                    bv = md.sizes[0];
+                    br = md.bitrate[0];
                     break;
                 case "m":
                     bv = md.sizes[1];
                     br = md.bitrate[1];
                     break;
                 case "h":
-                    bv = md.sizes[0];
-                    br = md.bitrate[0];
+                    bv = md.sizes[2];
+                    br = md.bitrate[2];
                     break;
             }
             Task.Run(() =>

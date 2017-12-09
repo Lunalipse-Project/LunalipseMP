@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Raw.cs" />
     <Compile Include="SearchType.cs" />
+    <Compile Include="Types\MetadataNE.cs" />
     <Compile Include="Types\SDetail.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
