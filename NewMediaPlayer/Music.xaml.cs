@@ -75,6 +75,8 @@ namespace NewMediaPlayer
                     Dispatcher.Invoke(new Action(() => loading.Visibility = Visibility.Visible));
                 }
             });
+
+            hj.E_AllComplete(() => Dispatcher.Invoke(() => search.IsEnabled = true));
         }
 
         private void ShowLyric(RResult rr)
@@ -135,6 +137,7 @@ namespace NewMediaPlayer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            (sender as Button).IsEnabled = false;
             string s = musicName.Text;
             if(MODE== SearchType.SONGS)
             {

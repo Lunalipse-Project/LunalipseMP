@@ -47,7 +47,7 @@
             </ListBox>
             <Ellipse Cursor="Hand" Fill="#B2FF2300" HorizontalAlignment="Left" Height="23" Margin="907,10,0,0" VerticalAlignment="Top" Width="23" MouseDown="EllipseMouseDown"/>
             <TextBox x:Name="musicName" HorizontalAlignment="Left" Height="36" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Background="{x:Null}" BorderBrush="White" Foreground="White" BorderThickness="1" VerticalContentAlignment="Center" Padding="9,0,0,0" CaretBrush="White"/>
-            <Button Content="搜   索" HorizontalAlignment="Left" Margin="320,92,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="Button_Click"/>
+            <Button x:Name="search" Content="搜   索" HorizontalAlignment="Left" Margin="320,92,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="Button_Click"/>
             <Label x:Name="loading" Visibility="Hidden" Content="Loading . . ." HorizontalAlignment="Left" Margin="134,302,0,0" VerticalAlignment="Top" Width="222" Height="44" Background="{x:Null}" Foreground="White" FontSize="24" Style="{DynamicResource Minecraft}" HorizontalContentAlignment="Center"/>
             <Button x:Name="mode" Content="单    曲" HorizontalAlignment="Left" Margin="388,92,0,0" VerticalAlignment="Top" Width="97" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="ModeChange"/>
             <Frame x:Name="CC" Content="Frame" HorizontalAlignment="Left" Height="422" Margin="490,92,0,0" VerticalAlignment="Top" Width="444" NavigationUIVisibility="Hidden"/>
