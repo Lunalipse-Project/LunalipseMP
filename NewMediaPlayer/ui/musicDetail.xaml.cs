@@ -36,7 +36,7 @@ namespace NewMediaPlayer.ui
                         if(!firstOpen)
                         {
                             ChoosenUrl = hj.ParseDownloadURL(y.ResultData);
-                            prev.Source = new Uri(ChoosenUrl);
+                            Dispatcher.Invoke(() => prev.Source = new Uri(ChoosenUrl));
                             firstOpen = true;
                         }
                         else

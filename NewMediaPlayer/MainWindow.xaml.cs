@@ -270,18 +270,18 @@ namespace NewMediaPlayer
 
         private void netMusic_Click(object sender, RoutedEventArgs e)
         {
-            //Music m = new Music();
-            //m.ShowInTaskbar = false;
-            //m.Show();
-            ModeChang();
-            lyrciAsm la = new lyrciAsm(()=>ModeChang(1),(v)=>
-            {
-                //duration
-                //draged = true;
-                //ps.setNewPosition((long)Math.Round(v));
-                //draged = false;
-            });
-            new LDailog(la, la.Width, la.Height, "LYRIC_EDITING").Show();
+            Music m = new Music();
+            m.ShowInTaskbar = false;
+            m.Show();
+            //ModeChang();
+            //lyrciAsm la = new lyrciAsm(()=>ModeChang(1),(v)=>
+            //{
+            //    //duration
+            //    //draged = true;
+            //    //ps.setNewPosition((long)Math.Round(v));
+            //    //draged = false;
+            //});
+            //new LDailog(la, la.Width, la.Height, "LYRIC_EDITING").Show();
         }
 
         private void programe_Click(object sender, RoutedEventArgs e)

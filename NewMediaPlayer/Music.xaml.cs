@@ -1,11 +1,7 @@
-﻿using LunaNetCore;
-using System;
+﻿using System;
 using System.Windows;
-using gMusic;
 using System.Collections.ObjectModel;
 using NewMediaPlayer.controler;
-using gMusic.util;
-using gMusic.MusicOL;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -24,7 +20,6 @@ namespace NewMediaPlayer
     /// </summary>
     public partial class Music : Window
     {
-        LunaProxy lunapxy;
         SDetail md;
         ResourceHolder RH;
         SearchType MODE = SearchType.SONGS;
@@ -167,7 +162,6 @@ namespace NewMediaPlayer
                     //Lyric implement
                     MusicN_For_LRC = mi.MusicN.Replace(":", " ");
                 }
-                lunapxy.ReqAsyn();
             }
         }
 
@@ -181,7 +175,6 @@ namespace NewMediaPlayer
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            LunaProxy.DEINSTANCE();
         }
 
         private void setting_md(object sender, System.Windows.Input.MouseButtonEventArgs e)

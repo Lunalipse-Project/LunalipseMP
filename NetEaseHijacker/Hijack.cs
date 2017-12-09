@@ -78,22 +78,24 @@ namespace NetEaseHijacker
         {
             try
             {
-                JToken jo = JObject.Parse(result)["songs"][0];
+                JObject jo = JObject.Parse(result);
                 if (!jo["songs"].HasValues) return null;
+                JToken jt= jo["songs"][0];
                 SDetail sd = new SDetail();
-                sd.id = jo["id"].ToString();
-                sd.name = jo["name"].ToString();
-                sd.al_pic = jo["al"]["picUrl"].ToString();
-                sd.ar_name = jo["ar"][0]["name"].ToString();
-                sd.al_name = jo["al"]["name"].ToString();
+                sd.id = jt["id"].ToString();
+                sd.name = jt["name"].ToString();
+                sd.al_pic = jt["al"]["picUrl"].ToString();
+                sd.ar_name = jt["ar"][0]["name"].ToString();
+                sd.al_name = jt["al"]["name"].ToString();
                 int i = 0;
 
                 foreach(char c in "lmh")
                 {
-                    if(jo[c].HasValues)
+                    string c_ = c.ToString();
+                    if(jt[c_].HasValues)
                     {
-                        sd.sizes[i] = Convert.ToInt64(jo[c]["size"].ToString());
-                        sd.bitrate[i] = Convert.ToInt32(jo[c]["br"].ToString());
+                        sd.sizes[i] = Convert.ToInt64(jt[c_]["size"].ToString());
+                        sd.bitrate[i] = Convert.ToInt32(jt[c_]["br"].ToString());
                         i++;
                     }
                 }
