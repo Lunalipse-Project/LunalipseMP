@@ -94,6 +94,12 @@ namespace NetEaseHijacker
             }
         }
 
+        public string[] ParseLyric(string result)
+        {
+            JObject jo = JObject.Parse(result);
+            return jo["lrc"]["lyric"].HasValues ? jo["lrc"]["lyric"].ToString().Replace("\n", "|").Split('|') : null;
+        }
+
         public string ParseDownloadURL(string result)
         {
             try
