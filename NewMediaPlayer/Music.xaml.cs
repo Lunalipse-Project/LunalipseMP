@@ -78,7 +78,7 @@ namespace NewMediaPlayer
 
         private void ShowLyric(RResult rr)
         {
-            //InvokeChangeContent(LunalipsContentUI.LYRIC_DISPLY, ResultFormatter.getLyrics(rr.ResultData), MusicN_For_LRC);
+            InvokeChangeContent(LunalipsContentUI.LYRIC_DISPLY, hj.ParseLyric(rr.ResultData)?? "NO_LYRICS", MusicN_For_LRC);
         }
 
         protected void InvokeChangeContent(LunalipsContentUI id, params object[] pArg)
@@ -110,6 +110,7 @@ namespace NewMediaPlayer
                 MetadataNE ls = hj.ParseSongList(rr.ResultData);
                 if(reset)
                 {
+                    pages.Visibility = next.Visibility = Visibility.Visible;
                     totalPages = Utils.Paging(ls.total);
                     curPage = 1;
                     offset = 0;
@@ -145,15 +146,8 @@ namespace NewMediaPlayer
         {
             (sender as Button).IsEnabled = false;
             kw = musicName.Text;
-            if(MODE== SearchType.SONGS)
-            {
-                reset = true;
-                hj.SearchSong(kw);
-            }
-            else
-            {
-                //Lyric
-            }
+            reset = true;
+            hj.SearchSong(kw);
         }
 
         private void music_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -169,15 +163,14 @@ namespace NewMediaPlayer
                 }
                 else
                 {
-                    //Lyric implement
-                    MusicN_For_LRC = mi.MusicN.Replace(":", " ");
+                    hj.Lyric(mi.ID);
+                    MusicN_For_LRC = mi.MusicN;
                 }
             }
         }
 
         private void ModeChange(object sender, RoutedEventArgs e)
         {
-            MODE++;
             if (MODE == SearchType.SONGS) MODE = SearchType.LYRIC;
             else MODE = SearchType.SONGS;
             (sender as Button).Content = MODE_SET[MODE == SearchType.SONGS ? 0 : 1];

@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Threading;
 using NewMediaPlayer.Shell;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 
 namespace NewMediaPlayer
 {
@@ -40,6 +41,7 @@ namespace NewMediaPlayer
 
         LinearGradientBrush LGB;
         ImageBrush ImB;
+        Brush defult;
         Storyboard m_in, m_out;
 
         bool changed = false;
@@ -112,6 +114,7 @@ namespace NewMediaPlayer
         public void InitialRes()
         {
             LGB = new LinearGradientBrush();
+            BlurEffect be = new BlurEffect();
             LGB.StartPoint = new Point(1, 0);
             LGB.EndPoint = new Point(0, 1);
             LGB.GradientStops.Add(new GradientStop(Color.FromArgb(255, 5, 33, 80),0));
@@ -121,9 +124,11 @@ namespace NewMediaPlayer
             ImB.ImageSource = RH.getImage("ChoNig");
             //ImB.Opacity = 0.5;
             ImB.Stretch = Stretch.Fill;
-
+            defult = bgHoder.Background;
             Logo.Background = new ImageBrush(RH.getImage("LunaCM"));
             feedback.Fill = new ImageBrush(RH.getImage("button"));
+            be.Radius = 15;
+            be.KernelType = KernelType.Gaussian;
         }
         
 
@@ -165,7 +170,7 @@ namespace NewMediaPlayer
                 }
                 string noExtension = global.CUR_MUSICN = Path.GetFileNameWithoutExtension(s);
                 LogFile.WriteLog("INFO", "Now playing : " + noExtension);
-                fs = new FileStream(global.MUSIC_PATH + @"\" + MusicList.SelectedItem.ToString(), FileMode.Open, FileAccess.Read, FileShare.Read);
+                fs = new FileStream(global.MUSIC_PATH + @"\" + MusicList.SelectedItem.ToString(), FileMode.Open, FileAccess.Read);
                 //Playing.Content = noExtension;
                 OnMusicChanged(noExtension);
 
@@ -177,6 +182,7 @@ namespace NewMediaPlayer
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace);
                 LogFile.WriteLog("ERROR", ex.Message);
             }
         }

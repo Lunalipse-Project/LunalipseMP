@@ -27,7 +27,7 @@ namespace NewMediaPlayer
             programe.Content = PL.GetContent("lpxCfg");
             equzer.Content = PL.GetContent("btnList4");
             loadscript.Content = PL.GetContent("btnList3");
-            Edlpx.Content = PL.GetContent("btnList2");
+            //Edlpx.Content = PL.GetContent("btnList2");
             netMusic.Content = PL.GetContent("btnList1");
             playmode.Content = PL.GetContent("orderPlay");
         }
@@ -281,16 +281,20 @@ namespace NewMediaPlayer
                 KeepListenUntilRelease = false,
                 keyStroked=new Behavior(() =>
                 {
-                    if(!changed)
+                    if (!global.ALBUM_BG)
                     {
-                        bgHoder.Background = ImB;
-                        changed = true;
+                        if (!changed)
+                        {
+                            defult = bgHoder.Background = ImB;
+                            changed = true;
+                        }
+                        else
+                        {
+                            defult = bgHoder.Background = LGB;
+                            changed = false;
+                        }
                     }
-                    else
-                    {
-                        bgHoder.Background = LGB;
-                        changed = false;
-                    }
+                    
                 })
             });
 
@@ -325,18 +329,25 @@ namespace NewMediaPlayer
             m_out = Resources["music_out"] as Storyboard;
             m_out.Completed += (a, b) =>
             {
-                //if(needChange)
-                //{
-                    Playing.Content = Path.GetFileNameWithoutExtension(MusicList.Items[global.SELECTED_MUSIC].ToString());
-                    //needChange = false;
-                    m_in.Begin();
-                //}
+                Playing.Content = ClearName(MusicList.Items[global.SELECTED_MUSIC].ToString());
+                m_in.Begin();
             };
         }
 
         private void SetupPacer()
         {
             p.Listen(this);
+        }
+
+        /// <summary>
+        /// make the music name more clear to see
+        /// </summary>
+        /// <param name="orgname"></param>
+        /// <returns></returns>
+        string ClearName(string orgname)
+        {
+            string[] spet = Path.GetFileNameWithoutExtension(orgname).Split('-');
+            return spet[spet.Length - 1].Trim();
         }
     }
 }

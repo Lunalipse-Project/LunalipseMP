@@ -14,8 +14,10 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        <TextBlock x:Name="lyrics" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="225" Width="444" Foreground="White" LineHeight="36" TextAlignment="Center" FontSize="16" Margin="0,82,0,0" FontFamily="Microsoft YaHei UI Light"><Run Text="测试行 第一行"/><LineBreak/><Run Text="测试行 第一行"/><LineBreak/><Run Text="测试行 第一行"/></TextBlock>
-        <Label Content="歌词预览" HorizontalAlignment="Left" Height="67" Margin="0,10,0,0" VerticalAlignment="Top" Width="434" Foreground="White" BorderBrush="White" Padding="7,5,5,5" UseLayoutRounding="True" BorderThickness="0,0,0,1" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
+        <ScrollViewer Width="444" Height="225" VerticalScrollBarVisibility="Hidden">
+            <TextBlock x:Name="lyrics" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" LineHeight="36" TextAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="Microsoft YaHei UI Light" Height="auto" Width="444"><Run Text="测试行 第一行"/><LineBreak/><Run Text="测试行 第一行"/><LineBreak/><Run Text="测试行 第一行"/></TextBlock>
+        </ScrollViewer>
+        <Label Content="歌词预览" HorizontalAlignment="Left" Height="67" Margin="0,10,0,0" VerticalAlignment="Top" Width="444" Foreground="White" BorderBrush="White" Padding="7,5,5,5" UseLayoutRounding="True" BorderThickness="0,0,0,1" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>
         <Button x:Name="save" Content="保存歌词到本地" HorizontalAlignment="Left" Height="56" Margin="10,331,0,0" VerticalAlignment="Top" Width="424" Background="{x:Null}" Foreground="White" BorderBrush="White" FontSize="18" FontFamily="Microsoft YaHei UI Light" Click="Button_Click"/>
         <Label x:Name="mn" Content="" HorizontalAlignment="Left" Height="23" Margin="0,46,0,0" VerticalAlignment="Top" Width="434" Foreground="White" Padding="7,5,5,5"/>
     </Grid>

@@ -10,7 +10,8 @@ using System.IO;
 using System.Threading;
 using System.Windows.Controls;
 using System.Windows;
-using CSCore.Streams.Effects;
+using CSCore.Tags;
+using CSCore.Tags.ID3;
 
 namespace NewMediaPlayer.Sound
 {
@@ -35,11 +36,13 @@ namespace NewMediaPlayer.Sound
         public delegate void SoundLoadedComplete(double newDuration);
         public delegate void ProgressUpdated(long newPosition);
         public delegate void DurationChanged(double durt,string formated);
+        public delegate void UpdateInfo(mMetadata mm);
 
         /*------- Declartion of Event --------*/
         public event PlaySoundComplete OnPlaySoundComplete;
         public event SoundLoadedComplete OnSoundLoadedComplete;
         public event ProgressUpdated OnProgressUpdated;
+        public event UpdateInfo OnInfoUpdated;
         public static event DurationChanged OnDurationChanged;
 
 
@@ -91,6 +94,7 @@ namespace NewMediaPlayer.Sound
 
             }));
             #endregion
+            OnInfoUpdated(ext == ".mp3" ? GetMP3Info(s_fs) : null);
             #region 音频线程
             t = new Thread(new ThreadStart(() =>
             {
@@ -192,6 +196,29 @@ namespace NewMediaPlayer.Sound
                 return isPaused;
             }
             return isPlaying;
+        }
+
+        private mMetadata GetMP3Info(FileStream fs)
+        {
+            ID3v2 id3v2 = ID3v2.FromStream(fs);
+            if (id3v2 == null)
+            {
+                //ID3v1 id3v1 = ID3v1.FromStream(fs);
+                //return new mMetadata()
+                //{
+                //    Al = id3v1.Album,
+                //    artist = id3v1.Artist,
+                //    AlPic = null
+                //};
+                return null;
+            }
+            ID3v2QuickInfo qi = new ID3v2QuickInfo(id3v2);
+            return new mMetadata()
+            {
+                Al = qi.Album,
+                artist = qi.LeadPerformers,
+                AlPic = qi.Image != null ? GUtil.bt2ibts(new System.Drawing.Bitmap(qi.Image)) : null
+            };
         }
 
         public bool ChangePlayStatus(bool b)

@@ -32,13 +32,10 @@ namespace NewMediaPlayer.ui
                 return;
             }
             lrcs = this.lrc.Split('\n');
-            int offset = 0;
-            for(int i=0;i<6;i++)
+            for(int i=0;i<lrcs.Length;i++)
             {
-                if (i > lrcs.Length - 1) break;
-                while (isNonLRC(lrcs[i + offset])) offset++;
-                if (i+offset > lrcs.Length - 1) break;
-                lyrics.Text += removeTimeSpan(lrcs[i + offset]) + "\n";
+                if (isNonLRC(lrcs[i])) continue;
+                lyrics.Text += removeTimeSpan(lrcs[i]) + "\n";
                 
             }
             save.IsEnabled = true;

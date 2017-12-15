@@ -52,6 +52,11 @@ namespace NetEaseHijacker
             await r.Get(SearchType.DOWNLOAD, id, bitRate);
         }
 
+        public async Task Lyric(string id)
+        {
+            await r.Get(SearchType.LYRIC, id);
+        }
+
         public MetadataNE ParseSongList(string result)
         {
             try
@@ -94,10 +99,17 @@ namespace NetEaseHijacker
             }
         }
 
-        public string[] ParseLyric(string result)
+        public string ParseLyric(string result)
         {
             JObject jo = JObject.Parse(result);
-            return jo["lrc"]["lyric"].HasValues ? jo["lrc"]["lyric"].ToString().Replace("\n", "|").Split('|') : null;
+            try
+            {
+                return jo["lrc"]["lyric"] != null ? jo["lrc"]["lyric"].ToString() : null;
+            }
+            catch (NullReferenceException)
+            {
+                return null;
+            }
         }
 
         public string ParseDownloadURL(string result)

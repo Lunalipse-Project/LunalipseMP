@@ -100,14 +100,14 @@
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>
-        
+
     </Window.Resources>
     <Grid Height="540" Width="960" MouseLeftButtonDown="Window_MouseLeftButtonDown">
         <Border CornerRadius="7" x:Name="bgHoder">
             <Border.Background>
                 <!--<ImageBrush ImageSource="res/ChoNig.png"/>-->
                 <LinearGradientBrush StartPoint="1,0" EndPoint="0,1" MappingMode="RelativeToBoundingBox">
-                    <GradientStop Color="#FF052150"/> 
+                    <GradientStop Color="#FF052150"/>
                     <GradientStop Color="#FF6950C6" Offset="1"/>
                     <GradientStop Color="#FF343788" Offset="0.509"/>
                 </LinearGradientBrush>
@@ -441,7 +441,7 @@
                         </Setter>
                     </Style>
                     <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
-                        <Ellipse Name="e" Width="15" Height="15" Fill="#337AB7"/>
+                        <Ellipse Name="e" Width="16" Height="16" Fill="#FF337AB7" Stroke="#FF337AB7" StrokeThickness="2" Margin="0,-2,0,0"/>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="e" Property="Fill" Value="#E52E6DA4"/>
@@ -621,21 +621,21 @@
                     </Style>
                 </Slider.Resources>
             </Slider>
-            <Label  x:Name="Playing" Content="" HorizontalAlignment="Left" Height="48" Margin="334,117,0,0" VerticalAlignment="Top" Width="616" Foreground="White" FontSize="30" FontFamily="Microsoft YaHei UI Light" UseLayoutRounding="False" Padding="5,38,5,5"/>
-            <Image x:Name="fftContainer" HorizontalAlignment="Left" Height="135" Margin="334,165,0,0" VerticalAlignment="Top" Width="381"/>
+            <Label  x:Name="Playing" Content="" HorizontalAlignment="Left" Height="48" Margin="334,104,0,0" VerticalAlignment="Top" Width="616" Foreground="White" FontSize="30" FontFamily="Microsoft YaHei UI Light" UseLayoutRounding="False" Padding="5,38,5,5"/>
+            <Image x:Name="fftContainer" HorizontalAlignment="Left" Height="111" Margin="334,189,0,0" VerticalAlignment="Top" Width="425"/>
             <Button x:Name="equzer" Content="均衡器" HorizontalAlignment="Left" Height="31" Margin="835,269,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="Button_Click_1" UseLayoutRounding="False"/>
             <Ellipse x:Name="random" Fill="#B2124AB3" HorizontalAlignment="Left" Height="40" Margin="706,431,0,0" VerticalAlignment="Top" Width="41" MouseDown="_Ellipse_MouseDown"/>
             <Ellipse Cursor="Hand" Fill="#B2EC971F" HorizontalAlignment="Left" Height="23" Margin="905,4,0,0" VerticalAlignment="Top" Width="23" MouseDown="Ellipse_MouseDown"/>
             <Label x:Name="playmode" Content="列表循环" HorizontalAlignment="Left" Height="27" Margin="544,507,0,0" VerticalAlignment="Top" Width="215" Foreground="White" HorizontalContentAlignment="Center" Padding="5" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
             <Button x:Name="loadscript" Content="加载脚本" HorizontalAlignment="Left" Height="31" Margin="835,233,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="Button_Click_2" UseLayoutRounding="False"/>
-            <Button x:Name="Edlpx" Content="编辑/创建Lunapx" HorizontalAlignment="Left" Height="31" Margin="835,197,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="Button_Click_3" UseLayoutRounding="False"/>
-            <Button x:Name="netMusic" Content="联网乐库" HorizontalAlignment="Left" Height="31" Margin="835,161,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="netMusic_Click" UseLayoutRounding="False"/>
+            <Button x:Name="netMusic" Content="联网乐库" HorizontalAlignment="Left" Height="31" Margin="835,197,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="netMusic_Click" UseLayoutRounding="False"/>
             <Button x:Name="programe" Content="Lunapx脚本设置" HorizontalAlignment="Left" Height="38" Margin="764,451,0,0" VerticalAlignment="Top" Width="186" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="1,1,1,0" Click="programe_Click" UseLayoutRounding="False"/>
             <Ellipse x:Name="setting" Cursor="Hand" Fill="#B2337AB7" HorizontalAlignment="Left" Height="23" Margin="877,4,0,0" VerticalAlignment="Top" Width="23" MouseDown="Lpsetting"/>
             <Ellipse x:Name="feedback" Cursor="Hand" HorizontalAlignment="Left" Height="23" Margin="849,4,0,0" VerticalAlignment="Top" Width="23" UseLayoutRounding="True">
-                
-            </Ellipse>
 
+            </Ellipse>
+            <Label  x:Name="Album" Content="" HorizontalAlignment="Left" Height="24" Margin="334,152,0,0" VerticalAlignment="Top" Width="616" Foreground="White" FontFamily="Microsoft YaHei UI Light" UseLayoutRounding="False" Padding="5,0,5,5"/>
+            <Label  x:Name="artist" Content="" HorizontalAlignment="Left" Height="22.421" Margin="334,176,0,0" VerticalAlignment="Top" Width="313" Foreground="White" FontFamily="Microsoft YaHei UI Light" UseLayoutRounding="False" Padding="5,2,5,5"/>
         </Grid>
     </Grid>
 </Window>

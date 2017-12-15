@@ -16,6 +16,8 @@ using NewMediaPlayer.Dialog;
 using LunalipseAPI.KShortcut;
 using NewMediaPlayer.Lyric;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
+using System.Windows.Media.Animation;
 
 namespace NewMediaPlayer
 {
@@ -256,6 +258,21 @@ namespace NewMediaPlayer
                     if (ps.ISPLAYING) ps.StopPlay();
                     Close();
                 });
+            };
+
+            ps.OnInfoUpdated += (m) =>
+            {
+                if(m!=null)
+                {
+                    Album.Content = m.Al;
+                    artist.Content = m.artist;
+                    bgHoder.Background = global.ALBUM_BG ? new ImageBrush(m.AlPic) : defult;
+                }
+                else
+                {
+                    Album.Content = artist.Content = "";
+                    bgHoder.Background = defult;
+                }
             };
 
             LineSpectrum.gfftd += x =>

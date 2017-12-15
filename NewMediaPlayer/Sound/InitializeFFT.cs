@@ -12,8 +12,7 @@ namespace NewMediaPlayer.Sound
 {
     class InitializeFFT
     {
-        [DllImport("gdi32")]
-        static extern int DeleteObject(IntPtr o);
+       
         LineSpectrum _lineSpectrum;
         CircularSpectrum cs;
         LunalipseInterface LI;
@@ -102,14 +101,7 @@ namespace NewMediaPlayer.Sound
                     }
                     if (newImage != null)
                     {
-                        IntPtr ip = newImage.GetHbitmap();
-                        OnSpectrumDrawnComplete(System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                            ip,
-                            IntPtr.Zero,
-                            System.Windows.Int32Rect.Empty,
-                            BitmapSizeOptions.FromEmptyOptions()));
-                        DeleteObject(ip);
-
+                        OnSpectrumDrawnComplete(GUtil.bt2ibts(newImage));
                     }
                 }
                 else OnSpectrumDrawnComplete(null);

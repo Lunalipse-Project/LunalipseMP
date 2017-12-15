@@ -39,7 +39,7 @@ namespace NewMediaPlayer
         public const int MAGIC_NUMBER_4_LPX = 0x4C55;
         public static bool LrcEditing = false;
         public static string CUR_MUSICN = "";
-
+        public static bool ALBUM_BG = false;
         public static Languages? LANG = Languages.CHINESE;
 
         public static Dictionary<int, LunalipseAPI.KShortcut.Keystroke> KsHolder = new Dictionary<int, LunalipseAPI.KShortcut.Keystroke>();

@@ -23,7 +23,7 @@
         <Grid>
             <Border CornerRadius="5" Height="auto" Background="#B2000000">
             </Border>
-            <Label x:Name="pages" Content="Label" HorizontalAlignment="Left" Height="29" Margin="78,479,0,0" VerticalAlignment="Top" Width="339" Foreground="White" HorizontalContentAlignment="Center"/>
+            <Label x:Name="pages" Content="Label" HorizontalAlignment="Left" Height="29" Margin="78,479,0,0" VerticalAlignment="Top" Width="339" Foreground="White" HorizontalContentAlignment="Center" Visibility="Hidden"/>
             <!--<Border CornerRadius="8,8,8,8" Height="auto"></Border>-->
             <Grid HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="128">
                 <Border CornerRadius="5,0,0,0" x:Name="logo">
@@ -55,8 +55,8 @@
             <Button x:Name="mode" Content="单    曲" HorizontalAlignment="Left" Margin="388,92,0,0" VerticalAlignment="Top" Width="97" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,1,1,1" Click="ModeChange"/>
             <Frame x:Name="CC" Content="Frame" HorizontalAlignment="Left" Height="422" Margin="490,92,0,0" VerticalAlignment="Top" Width="444" NavigationUIVisibility="Hidden"/>
             <Ellipse x:Name="setting" Cursor="Hand" Fill="#B2337AB7" HorizontalAlignment="Left" Height="23" Margin="879,10,0,0" VerticalAlignment="Top" Width="23" MouseDown="setting_md"/>
-            <Button x:Name="previous" Content="上一页" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="1,0,0,0" Click="PreviousPage"/>
-            <Button x:Name="next" Content="下一页" HorizontalAlignment="Left" Margin="417,474,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,1,0" Click="nextPage"/>
+            <Button x:Name="previous" Content="上一页" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="1,0,0,0" Click="PreviousPage" Visibility="Hidden"/>
+            <Button x:Name="next" Content="下一页" HorizontalAlignment="Left" Margin="417,474,0,0" VerticalAlignment="Top" Width="68" Height="36" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,1,0" Click="nextPage" Visibility="Hidden"/>
 
 
         </Grid>

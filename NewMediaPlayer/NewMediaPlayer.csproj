@@ -181,6 +181,7 @@
     <Compile Include="Sound\InitializeFFT.cs" />
     <Compile Include="Sound\ISpectrumProvider.cs" />
     <Compile Include="Sound\LineSpectrum.cs" />
+    <Compile Include="Sound\mMetadata.cs" />
     <Compile Include="Sound\PlaySound.cs" />
     <Compile Include="Sound\ScalingStrategy.cs" />
     <Compile Include="Sound\SpectrumBase.cs" />
