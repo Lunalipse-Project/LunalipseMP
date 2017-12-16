@@ -344,7 +344,7 @@ namespace NewMediaPlayer
         {
             string[] spet = Path.GetFileNameWithoutExtension(orgname).Split('-');
             string ret = "";
-            if (spet.Length <= 1) return orgname;
+            if (spet.Length <= 1) return spet[0];
             for (int i = 1; i < spet.Length; i++)
             {
                 ret += spet[i] + "-";

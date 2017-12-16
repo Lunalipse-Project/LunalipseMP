@@ -131,7 +131,7 @@ namespace NewMediaPlayer.Lyric
                             double time = TimeSpan.Parse("00:" + mc[0].Groups[1].Value).TotalSeconds;
                             time += o / 1000;
                             string word = mc[0].Groups[2].Value;
-                            dir.Add(time, word);
+                            dir.Add4nRep(time, word);
                         }
                     }
                 }

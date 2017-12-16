@@ -116,7 +116,7 @@
                 <DropShadowEffect BlurRadius="15" Opacity="0.75" ShadowDepth="0"/>
             </Border.Effect>
         </Border>
-        <Grid x:Name="outershell" Margin="0,0,0,0" Height="540" Width="960.5">
+        <Grid x:Name="outershell" Margin="0,0,0,0" Height="541" Width="960.5">
             <Border CornerRadius="7" Background="#8C000000"></Border>
             <Grid HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="128">
                 <Border CornerRadius="7,0,0,0" x:Name="Logo" Margin="-.5,-.5,0,0"/>
