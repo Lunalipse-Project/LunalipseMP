@@ -25,12 +25,12 @@
                 <Label x:Name="t1s2" Content="显示当前播放歌曲名称" HorizontalAlignment="Left" Height="25" Margin="10,76,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
                 <Label x:Name="t1s3" Content="显示当前播放的进度" HorizontalAlignment="Left" Height="25" Margin="10,106,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
                 <Label x:Name="t1s4" Content="虚拟桌面支持（仅限Windows 10）" HorizontalAlignment="Left" Height="25" Margin="10,136,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="fft" Style="{StaticResource MordenCB}" Width="20" Margin="408,48,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <CheckBox x:Name="name" Style="{StaticResource MordenCB}" Width="20" Margin="408,78,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <CheckBox x:Name="durtion" Style="{StaticResource MordenCB}" Width="20" Margin="408,108,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <CheckBox x:Name="vdesk" Style="{StaticResource MordenCB}" Width="20" Margin="408,138,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <CheckBox x:Name="SHOW_FFT" Style="{StaticResource MordenCB}" Width="20" Margin="408,48,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <CheckBox x:Name="SHOW_MUSIC_NAME" Style="{StaticResource MordenCB}" Width="20" Margin="408,78,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <CheckBox x:Name="SHOW_CUR_DURATION" Style="{StaticResource MordenCB}" Width="20" Margin="408,108,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <CheckBox x:Name="SUPPORT_VDESKTOP" Style="{StaticResource MordenCB}" Width="20" Margin="408,138,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
                 <Label x:Name="t1s5" Content="显示歌词" HorizontalAlignment="Left" Height="25" Margin="10,166,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="diplrc" Style="{StaticResource MordenCB}" Width="20" Margin="408,168,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <CheckBox x:Name="DISP_LYRIC" Style="{StaticResource MordenCB}" Width="20" Margin="408,168,10,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
                 <Label x:Name="t2" Content="快速傅里叶变换频谱设置" HorizontalAlignment="Left" Height="31" Margin="10,203,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
                 <Label x:Name="t2s1" Content="频谱刷新率（毫秒）" HorizontalAlignment="Left" Height="25" Margin="10,239,0,0" VerticalAlignment="Top" Width="328" Padding="20,5,5,5" Foreground="White"/>
                 <Label x:Name="t2s2" Content="变换组浮点放缩策略" HorizontalAlignment="Left" Height="25" Margin="10,269,0,0" VerticalAlignment="Top" Width="328" Padding="20,5,5,5" Foreground="White"/>
@@ -600,19 +600,19 @@
                         </Style>
                     </ComboBox.Resources>
                 </ComboBox>
-                <Label x:Name="t4" Content="歌词显示区域设置" HorizontalAlignment="Left" Height="31" Margin="10,451,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
-                <Label x:Name="t4s1" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,487,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="plgsec" Style="{StaticResource MordenCB}" Width="20" Margin="408,492,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <Label x:Name="t5" Content="歌词显示区域设置" HorizontalAlignment="Left" Height="31" Margin="10,528,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
-                <Label x:Name="t5s1" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,564,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="enableLog" Style="{StaticResource MordenCB}" Width="20" Margin="408,569,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <Label x:Name="t6s1" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,674,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="expbin" Style="{StaticResource MordenCB}" Width="20" Margin="408,679,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <Label x:Name="t6s2" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,704,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="usebin" Style="{StaticResource MordenCB}" Width="20" Margin="408,709,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <Label x:Name="t5s2" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,594,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="console" Style="{StaticResource MordenCB}" Width="20" Margin="408,594,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
-                <Label x:Name="t6" Content="歌词显示区域设置" HorizontalAlignment="Left" Height="31" Margin="10,638,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
+                <Label x:Name="t4" Content="歌词显示区域设置" HorizontalAlignment="Left" Height="31" Margin="10,544,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
+                <Label x:Name="t4s1" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,580,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
+                <CheckBox x:Name="PLUGIN_SECURITY" Style="{StaticResource MordenCB}" Width="20" Margin="408,585,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <Label x:Name="t5" Content="歌词显示区域设置" HorizontalAlignment="Left" Height="31" Margin="10,621,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
+                <Label x:Name="t5s1" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,657,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
+                <CheckBox x:Name="LOG_RECORD" Style="{StaticResource MordenCB}" Width="20" Margin="408,662,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <Label x:Name="t6s1" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,767,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
+                <CheckBox x:Name="EXPORT_BIN" Style="{StaticResource MordenCB}" Width="20" Margin="408,772,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <Label x:Name="t6s2" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,797,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
+                <CheckBox x:Name="USE_BIN" Style="{StaticResource MordenCB}" Width="20" Margin="408,802,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <Label x:Name="t5s2" Content="启用FFT频谱显示（低配置电脑请关闭此选项）" HorizontalAlignment="Left" Height="25" Margin="15,687,0,0" VerticalAlignment="Top" Width="393" Padding="20,5,5,5" Foreground="White"/>
+                <CheckBox x:Name="USE_SHELL" Style="{StaticResource MordenCB}" Width="20" Margin="408,687,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <Label x:Name="t6" Content="歌词显示区域设置" HorizontalAlignment="Left" Height="31" Margin="10,731,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
                 <Label x:Name="t2s3" Content="变换组浮点放缩策略" HorizontalAlignment="Left" Height="25" Margin="10,299,0,0" VerticalAlignment="Top" Width="328" Padding="20,5,5,5" Foreground="White"/>
                 <ComboBox HorizontalAlignment="Left" Margin="343,299,0,0" VerticalAlignment="Top" Width="85" Height="25" Background="{x:Null}" Style="{DynamicResource ComboBoxStyle1}" x:Name="shape" SelectionChanged="shapeChanged">
                     <ComboBox.Resources>
@@ -896,7 +896,10 @@
                     </ComboBox.Resources>
                 </ComboBox>
                 <Label x:Name="t3s2" Content="频谱刷新率（毫秒）" HorizontalAlignment="Left" Height="25" Margin="10,402,0,0" VerticalAlignment="Top" Width="328" Padding="20,5,5,5" Foreground="White"/>
-                <CheckBox x:Name="syslang" Style="{StaticResource MordenCB}" Width="20" Margin="408,407,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <CheckBox x:Name="USE_SYS_LANG" Style="{StaticResource MordenCB}" Width="20" Margin="408,407,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
+                <Label x:Name="t7" Content="国际化" HorizontalAlignment="Left" Height="31" Margin="10,439,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" FontSize="14"/>
+                <Label x:Name="t7s1" Content="频谱刷新率（毫秒）" HorizontalAlignment="Left" Height="25" Margin="10,477,0,0" VerticalAlignment="Top" Width="328" Padding="20,5,5,5" Foreground="White"/>
+                <CheckBox x:Name="ALBUM_BG" Style="{StaticResource MordenCB}" Width="20" Margin="408,482,10.4,0" Height="20" Checked="StatusCheck" Unchecked="StatusCheck" VerticalAlignment="Top"/>
 
             </Grid>
         </ScrollViewer>

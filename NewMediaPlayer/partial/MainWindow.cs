@@ -26,7 +26,6 @@ namespace NewMediaPlayer
             setmpath.Content = PL.GetContent("MusicDir");
             programe.Content = PL.GetContent("lpxCfg");
             equzer.Content = PL.GetContent("btnList4");
-            loadscript.Content = PL.GetContent("btnList3");
             //Edlpx.Content = PL.GetContent("btnList2");
             netMusic.Content = PL.GetContent("btnList1");
             playmode.Content = PL.GetContent("orderPlay");
@@ -87,6 +86,7 @@ namespace NewMediaPlayer
                 fs.Close();
                 fs.Dispose();
             }
+            isfirst = false;
             MusicList.Dispatcher.Invoke(new Action(() =>
             {
                 switch (global.PLAY_MODE)
@@ -100,21 +100,17 @@ namespace NewMediaPlayer
                         {
                             global.SELECTED_MUSIC = 0;
                         }
-                        loadscript.IsEnabled = false;
                         break;
                     case 2:
                         Random r = new Random();
                         global.SELECTED_MUSIC = r.Next(0, MusicList.Items.Count - 1);
-                        loadscript.IsEnabled = false;
                         break;
                     case 1:
-                        loadscript.IsEnabled = false;
                         // play cycle. Do nothing.
                         break;
                     default:
                         if(global.PLAY_MODE<=Command.SCRIPT_range)
                         {
-                            loadscript.IsEnabled = true;
                             int pnum = global.PLAY_MODE - 2;
                             bool isSuccess = false;
                             if (sp == null)
@@ -347,7 +343,14 @@ namespace NewMediaPlayer
         string ClearName(string orgname)
         {
             string[] spet = Path.GetFileNameWithoutExtension(orgname).Split('-');
-            return spet[spet.Length - 1].Trim();
+            string ret = "";
+            if (spet.Length <= 1) return orgname;
+            for (int i = 1; i < spet.Length; i++)
+            {
+                ret += spet[i] + "-";
+            }
+            ret = ret.Substring(0, ret.Length - 1);
+            return ret.Trim();
         }
     }
 }

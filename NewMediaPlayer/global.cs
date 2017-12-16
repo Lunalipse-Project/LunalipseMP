@@ -1,5 +1,6 @@
 ﻿using I18N;
 using NewMediaPlayer.Generic;
+using NewMediaPlayer.Generic.Attr;
 using NewMediaPlayer.Sound;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,17 +20,28 @@ namespace NewMediaPlayer
         public static double PRELISTEN_VOLUME = 0.7;    //试听歌曲音量
         public static string VER = "";
 
+        [ExternSetting]
         public static bool DISP_LYRIC = true;
+        [ExternSetting]
         public static bool SHOW_FFT = true;
+        [ExternSetting]
         public static bool SHOW_MUSIC_NAME = true;
+        [ExternSetting]
         public static bool SHOW_CUR_DURATION = true;
+        [ExternSetting]
         public static bool SUPPORT_VDESKTOP = true;
+        [ExternSetting]
         public static bool PLUGIN_SECURITY = true;
+        [ExternSetting]
         public static bool LOG_RECORD = true;
+        [ExternSetting]
         public static bool EXPORT_BIN = true;
+        [ExternSetting]
         public static bool USE_BIN = true;
+        [ExternSetting]
         public static bool USE_SYS_LANG = false;
         public static bool USE_CIRCULAR_SPECT = true;
+        [ExternSetting]
         public static bool USE_SHELL = false;
 
         public static ScalingStrategy SSTR = ScalingStrategy.Linear;
@@ -39,7 +51,8 @@ namespace NewMediaPlayer
         public const int MAGIC_NUMBER_4_LPX = 0x4C55;
         public static bool LrcEditing = false;
         public static string CUR_MUSICN = "";
-        public static bool ALBUM_BG = false;
+        [ExternSetting]
+        public static bool ALBUM_BG = true;
         public static Languages? LANG = Languages.CHINESE;
 
         public static Dictionary<int, LunalipseAPI.KShortcut.Keystroke> KsHolder = new Dictionary<int, LunalipseAPI.KShortcut.Keystroke>();

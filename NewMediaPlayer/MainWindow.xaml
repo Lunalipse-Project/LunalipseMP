@@ -116,11 +116,10 @@
                 <DropShadowEffect BlurRadius="15" Opacity="0.75" ShadowDepth="0"/>
             </Border.Effect>
         </Border>
-        <Grid x:Name="outershell">
+        <Grid x:Name="outershell" Margin="0,0,0,0" Height="540" Width="960.5">
             <Border CornerRadius="7" Background="#8C000000"></Border>
             <Grid HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="128">
-                <Border CornerRadius="7,0,0,0" x:Name="Logo">
-                </Border>
+                <Border CornerRadius="7,0,0,0" x:Name="Logo" Margin="-.5,-.5,0,0"/>
             </Grid>
             <Label Name="TITLE" Content="Lunalipse" HorizontalAlignment="Left" Height="86" Margin="79,-11,0,0" VerticalAlignment="Top" Width="338" Foreground="White" FontSize="72" Style="{DynamicResource ResourceKey=Equestria}" Padding="5,65,5,5"/>
             <Ellipse Cursor="Hand" Fill="#B2FF2300" HorizontalAlignment="Left" Height="23" Margin="933,4,0,0" VerticalAlignment="Top" Width="23" MouseDown="EllipseMouseDown"/>
@@ -627,8 +626,7 @@
             <Ellipse x:Name="random" Fill="#B2124AB3" HorizontalAlignment="Left" Height="40" Margin="706,431,0,0" VerticalAlignment="Top" Width="41" MouseDown="_Ellipse_MouseDown"/>
             <Ellipse Cursor="Hand" Fill="#B2EC971F" HorizontalAlignment="Left" Height="23" Margin="905,4,0,0" VerticalAlignment="Top" Width="23" MouseDown="Ellipse_MouseDown"/>
             <Label x:Name="playmode" Content="列表循环" HorizontalAlignment="Left" Height="27" Margin="544,507,0,0" VerticalAlignment="Top" Width="215" Foreground="White" HorizontalContentAlignment="Center" Padding="5" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-            <Button x:Name="loadscript" Content="加载脚本" HorizontalAlignment="Left" Height="31" Margin="835,233,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="Button_Click_2" UseLayoutRounding="False"/>
-            <Button x:Name="netMusic" Content="联网乐库" HorizontalAlignment="Left" Height="31" Margin="835,197,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="netMusic_Click" UseLayoutRounding="False"/>
+            <Button x:Name="netMusic" Content="联网乐库" HorizontalAlignment="Left" Height="31" Margin="835,233,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" Foreground="White" BorderBrush="White" Click="netMusic_Click" UseLayoutRounding="False"/>
             <Button x:Name="programe" Content="Lunapx脚本设置" HorizontalAlignment="Left" Height="38" Margin="764,451,0,0" VerticalAlignment="Top" Width="186" Background="{x:Null}" Foreground="White" BorderBrush="White" BorderThickness="1,1,1,0" Click="programe_Click" UseLayoutRounding="False"/>
             <Ellipse x:Name="setting" Cursor="Hand" Fill="#B2337AB7" HorizontalAlignment="Left" Height="23" Margin="877,4,0,0" VerticalAlignment="Top" Width="23" MouseDown="Lpsetting"/>
             <Ellipse x:Name="feedback" Cursor="Hand" HorizontalAlignment="Left" Height="23" Margin="849,4,0,0" VerticalAlignment="Top" Width="23" UseLayoutRounding="True">

@@ -137,6 +137,7 @@
     <Compile Include="floating.xaml.cs">
       <DependentUpon>floating.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Generic\Attr\ExternSetting.cs" />
     <Compile Include="Generic\CustomMode.cs" />
     <Compile Include="Generic\Extended.cs" />
     <Compile Include="Generic\ResourceHolder.cs" />

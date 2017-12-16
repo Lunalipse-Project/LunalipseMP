@@ -266,7 +266,7 @@ namespace NewMediaPlayer
                 {
                     Album.Content = m.Al;
                     artist.Content = m.artist;
-                    bgHoder.Background = global.ALBUM_BG ? new ImageBrush(m.AlPic) : defult;
+                    bgHoder.Background = global.ALBUM_BG ? m.AlPic != null ? new ImageBrush(m.AlPic) : defult : defult;
                 }
                 else
                 {

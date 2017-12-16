@@ -2,9 +2,11 @@
 using LpxResource.Generic;
 using NewMediaPlayer.controler;
 using NewMediaPlayer.Dialog;
+using NewMediaPlayer.Generic.Attr;
 using NewMediaPlayer.Shell;
 using NewMediaPlayer.Sound;
 using System;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +28,15 @@ namespace NewMediaPlayer.ui
             ld = _ld;
             LI = LunalipseInterface.INSTANCE;
 
-            fft.IsChecked = global.SHOW_FFT;
+            foreach(FieldInfo fi in typeof(global).GetFields(BindingFlags.Static|BindingFlags.Public))
+            {
+                if (fi.GetCustomAttribute(typeof(ExternSetting)) == null) continue;
+                CheckBox cb = FindName(fi.Name) is CheckBox _cb ? _cb : null;
+                if (cb == null) continue;
+                cb.IsChecked = (bool)fi.GetValue(null);
+            }
+
+            /*fft.IsChecked = global.SHOW_FFT;
             name.IsChecked = global.SHOW_MUSIC_NAME;
             durtion.IsChecked = global.SHOW_CUR_DURATION;
             vdesk.IsEnabled = Environment.OSVersion.Version.Major == 10;
@@ -36,7 +46,7 @@ namespace NewMediaPlayer.ui
             enableLog.IsChecked = global.LOG_RECORD;
             expbin.IsChecked = global.EXPORT_BIN;
             usebin.IsChecked = global.USE_BIN;
-            syslang.IsChecked = global.USE_SYS_LANG;
+            syslang.IsChecked = global.USE_SYS_LANG;*/
             consolas.Visibility = global.USE_SHELL ? Visibility.Visible : Visibility.Hidden;
 
             PL = I18NHelper.INSTANCE.GetReferrence("Setting");
@@ -70,6 +80,20 @@ namespace NewMediaPlayer.ui
 
         void ApplyLang()
         {
+            for(int i = 1; i <= 7; i++)
+            {
+                Label l = FindName("t" + i) is Label ? FindName("t" + i) as Label : null;
+                if (l == null) continue;
+                l.Content = PL.GetContent("T{0}".FormateEx(i));
+                for(int j=1; ;j++)
+                {
+                    object o = FindName("t{0}s{1}".FormateEx(i, j));
+                    Label lj = o is Label l_ ? l_ : null;
+                    if (lj == null) break;
+                    lj.Content = PL.GetContent("T{0}_Sub{1}".FormateEx(i, j));
+                }
+            }
+            /*
             t1.Content = PL.GetContent("T1");
             t1s1.Content = PL.GetContent("T1_Sub1");
             t1s2.Content = PL.GetContent("T1_Sub2");
@@ -96,7 +120,7 @@ namespace NewMediaPlayer.ui
             t6.Content = PL.GetContent("T6");
             t6s1.Content = PL.GetContent("T6_Sub1");
             t6s2.Content = PL.GetContent("T6_Sub2");
-
+            */
             
 
             success.Content = PL.GetContent("sucess");
@@ -112,7 +136,8 @@ namespace NewMediaPlayer.ui
         {
             CheckBox cb = sender as CheckBox;
             bool status = cb.IsChecked.HasValue ? (bool)cb.IsChecked : IsInitialized;
-            switch (cb.Name)
+            typeof(global).GetField(cb.Name, BindingFlags.Static | BindingFlags.Public).SetValue(null, status);
+            /*switch (cb.Name)
             {
                 case "fft":
                     global.SHOW_FFT = status;
@@ -148,7 +173,7 @@ namespace NewMediaPlayer.ui
                 case "syslang":
                     global.USE_SYS_LANG = status;
                     break;
-            }
+            }*/
         }
 
         private void scaling_SelectionChanged(object sender, SelectionChangedEventArgs e)

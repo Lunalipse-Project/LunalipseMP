@@ -44,7 +44,7 @@ namespace NewMediaPlayer
         Brush defult;
         Storyboard m_in, m_out;
 
-        bool changed = false;
+        bool changed = false, isfirst = true;
 
         public delegate void MusicChanged(string name);
         public delegate void ExecuteCompletely();
@@ -158,6 +158,7 @@ namespace NewMediaPlayer
                 return;
             }
             global.SELECTED_MUSIC = MusicList.SelectedIndex;
+            isfirst = false;
             m_out.Begin();
             try
             {
@@ -225,7 +226,14 @@ namespace NewMediaPlayer
 
         private void Ellipse_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            Mainbtn.Fill = ps.ChangePlayStatus()?new SolidColorBrush(Color.FromArgb(193,92,184,92)):new SolidColorBrush(Color.FromArgb(193, 217, 83, 79));
+            if(isfirst)
+            {
+                pressed = true;
+                isfirst = false;
+                global.SELECTED_MUSIC = -1;
+                Ps_opsc();
+            }
+            else Mainbtn.Fill = ps.ChangePlayStatus()?new SolidColorBrush(Color.FromArgb(193,92,184,92)):new SolidColorBrush(Color.FromArgb(193, 217, 83, 79));
         }
 
         private void duration_MouseEnter(object sender, MouseEventArgs e)
@@ -259,12 +267,6 @@ namespace NewMediaPlayer
         private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
         {
             WindowState = WindowState.Minimized;
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            pressed = true;
-            Ps_opsc();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
