@@ -127,10 +127,10 @@ namespace NewMediaPlayer
             defult = bgHoder.Background;
             Logo.Background = new ImageBrush(RH.getImage("LunaCM"));
             feedback.Fill = new ImageBrush(RH.getImage("button"));
-            be.Radius = 15;
+            be.Radius = 100;
             be.KernelType = KernelType.Gaussian;
         }
-        
+
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

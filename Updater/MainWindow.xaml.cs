@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,7 +24,6 @@ namespace Updater
         public MainWindow()
         {
             InitializeComponent();
-            Ccontant.Content = new update();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -34,6 +34,11 @@ namespace Updater
         private void EllipseClk(object sender, MouseButtonEventArgs e)
         {
             Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            (Resources["rotate"] as Storyboard).Begin();
         }
     }
 }

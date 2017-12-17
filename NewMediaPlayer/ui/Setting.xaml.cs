@@ -35,18 +35,6 @@ namespace NewMediaPlayer.ui
                 if (cb == null) continue;
                 cb.IsChecked = (bool)fi.GetValue(null);
             }
-
-            /*fft.IsChecked = global.SHOW_FFT;
-            name.IsChecked = global.SHOW_MUSIC_NAME;
-            durtion.IsChecked = global.SHOW_CUR_DURATION;
-            vdesk.IsEnabled = Environment.OSVersion.Version.Major == 10;
-            vdesk.IsChecked = global.SUPPORT_VDESKTOP;
-            diplrc.IsChecked = global.DISP_LYRIC;
-            plgsec.IsChecked = global.PLUGIN_SECURITY;
-            enableLog.IsChecked = global.LOG_RECORD;
-            expbin.IsChecked = global.EXPORT_BIN;
-            usebin.IsChecked = global.USE_BIN;
-            syslang.IsChecked = global.USE_SYS_LANG;*/
             consolas.Visibility = global.USE_SHELL ? Visibility.Visible : Visibility.Hidden;
 
             PL = I18NHelper.INSTANCE.GetReferrence("Setting");
@@ -93,35 +81,6 @@ namespace NewMediaPlayer.ui
                     lj.Content = PL.GetContent("T{0}_Sub{1}".FormateEx(i, j));
                 }
             }
-            /*
-            t1.Content = PL.GetContent("T1");
-            t1s1.Content = PL.GetContent("T1_Sub1");
-            t1s2.Content = PL.GetContent("T1_Sub2");
-            t1s3.Content = PL.GetContent("T1_Sub3");
-            t1s4.Content = PL.GetContent("T1_Sub4");
-            t1s5.Content = PL.GetContent("T1_Sub5");
-
-            t2.Content = PL.GetContent("T2");
-            t2s1.Content = PL.GetContent("T2_Sub1");
-            t2s2.Content = PL.GetContent("T2_Sub2");
-            t2s3.Content = PL.GetContent("T2_Sub3");
-
-            t3.Content = PL.GetContent("T3");
-            t3s1.Content = PL.GetContent("T3_Sub1");
-            t3s2.Content = PL.GetContent("T3_Sub2");
-
-            t4.Content = PL.GetContent("T4");
-            t4s1.Content = PL.GetContent("T4_Sub1");
-
-            t5.Content = PL.GetContent("T5");
-            t5s1.Content = PL.GetContent("T5_Sub1");
-            t5s2.Content = PL.GetContent("T5_Sub2");
-
-            t6.Content = PL.GetContent("T6");
-            t6s1.Content = PL.GetContent("T6_Sub1");
-            t6s2.Content = PL.GetContent("T6_Sub2");
-            */
-            
 
             success.Content = PL.GetContent("sucess");
             apply.Content = PL.GetContent("apy");
@@ -137,43 +96,7 @@ namespace NewMediaPlayer.ui
             CheckBox cb = sender as CheckBox;
             bool status = cb.IsChecked.HasValue ? (bool)cb.IsChecked : IsInitialized;
             typeof(global).GetField(cb.Name, BindingFlags.Static | BindingFlags.Public).SetValue(null, status);
-            /*switch (cb.Name)
-            {
-                case "fft":
-                    global.SHOW_FFT = status;
-                    break;
-                case "name":
-                    global.SHOW_MUSIC_NAME = status;
-                    break;
-                case "durtion":
-                    global.SHOW_CUR_DURATION = status;
-                    break;
-                case "vdesk":
-                    global.SUPPORT_VDESKTOP = status;
-                    break;
-                case "diplrc":
-                    global.DISP_LYRIC = status;
-                    break;
-                case "plgsec":
-                    global.PLUGIN_SECURITY = status;
-                    break;
-                case "enableLog":
-                    global.LOG_RECORD = status;
-                    break;
-                case "expbin":
-                    global.EXPORT_BIN = status;
-                    break;
-                case "usebin":
-                    global.USE_BIN = status;
-                    break;
-                case "console":
-                    global.USE_SHELL = status;
-                    consolas.Visibility = global.USE_SHELL ? Visibility.Visible : Visibility.Collapsed;
-                    break;
-                case "syslang":
-                    global.USE_SYS_LANG = status;
-                    break;
-            }*/
+            consolas.Visibility = global.USE_SHELL ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void scaling_SelectionChanged(object sender, SelectionChangedEventArgs e)

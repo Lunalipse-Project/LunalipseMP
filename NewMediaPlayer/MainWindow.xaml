@@ -121,7 +121,7 @@
             <Grid HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="128">
                 <Border CornerRadius="7,0,0,0" x:Name="Logo" Margin="-.5,-.5,0,0"/>
             </Grid>
-            <Label Name="TITLE" Content="Lunalipse" HorizontalAlignment="Left" Height="86" Margin="79,-11,0,0" VerticalAlignment="Top" Width="338" Foreground="White" FontSize="72" Style="{DynamicResource ResourceKey=Equestria}" Padding="5,65,5,5"/>
+            <Label Name="TITLE" Content="Lunalipse" HorizontalAlignment="Left" Height="86" Margin="79,-11,0,0" VerticalAlignment="Top" Width="338" Foreground="White" FontSize="72" Style="{DynamicResource ResourceKey=Equestria}" Padding="5"/>
             <Ellipse Cursor="Hand" Fill="#B2FF2300" HorizontalAlignment="Left" Height="23" Margin="933,4,0,0" VerticalAlignment="Top" Width="23" MouseDown="EllipseMouseDown"/>
             <ListBox x:Name="MusicList" HorizontalAlignment="Left" Height="417" Margin="10,113,0,0" VerticalAlignment="Top" Width="319" Background="{x:Null}" Foreground="White" BorderThickness="0,0,2,0" SelectionChanged="MusicList_SelectionChanged" Style="{DynamicResource ListBoxStyle1}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" UseLayoutRounding="False"/>
             <Button x:Name="setmpath" Content="Music Path" HorizontalAlignment="Left" Margin="857,489,0,0" VerticalAlignment="Top" Width="93" Background="{x:Null}" Foreground="White" BorderBrush="White" Height="41" Cursor="Hand" Click="Button_Click" BorderThickness="1" UseLayoutRounding="False"/>

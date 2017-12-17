@@ -6,12 +6,20 @@
         xmlns:local="clr-namespace:Updater"
         mc:Ignorable="d"
         AllowsTransparency="True"
-        Title="MainWindow" Height="402" Width="450.466" Background="Transparent" ResizeMode="NoResize" WindowStyle="None">
+        Title="MainWindow" Height="101.093" Width="488.866" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="res/Mics.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="exchange">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="0" To="1" Storyboard.TargetName="PrgCnt"></DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="1" To="0" Storyboard.TargetName="title"></DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="rotate">
+                <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+                                 To="-360" Duration="0:0:1" RepeatBehavior="Forever" Storyboard.TargetName="Celestia"/>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Background="Transparent" MouseDown="Border_MouseDown">
@@ -26,13 +34,21 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.75" ShadowDepth="0"/>
             </Border.Effect>
+            <Label x:Name="title" Content="Label" HorizontalAlignment="Left" Height="49" Margin="74,12,0,0" VerticalAlignment="Top" Width="151" FontSize="24" Foreground="White"/>
 
         </Border>
         <Grid>
-            <Frame x:Name="Ccontant" Content="Frame" Margin="28.4,83,28.4,24.6" Foreground="White" Width="393" Height="294"/>
-            <Label Content="Celisator" HorizontalAlignment="Left" Height="72" Margin="81,6,0,0" VerticalAlignment="Top" Width="381" Foreground="White" Style="{DynamicResource ResourceKey=Equestria}" FontSize="70" Padding="5,0,5,5"/>
             <Ellipse Cursor="Hand" Fill="#B2FF2300" Height="23" VerticalAlignment="Top" MouseDown="EllipseClk" Margin="0,19,19.4,0" HorizontalAlignment="Right" Width="23"/>
-            <Image HorizontalAlignment="Left" Height="59" VerticalAlignment="Top" Width="62" Source="res/celi.png" Margin="19,19,0,0"/>
+            <Image x:Name="Celestia" HorizontalAlignment="Left" Height="59" VerticalAlignment="Top" Width="62" Source="res/celi.png" Margin="19,19,0,0" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <RotateTransform/>
+                </Image.RenderTransform>
+            </Image>
+            <Grid x:Name="PrgCnt" Width="auto" Height="auto" Margin="86,36,73.8,39.8" Opacity="0">
+                <ProgressBar HorizontalAlignment="Left" Height="5" VerticalAlignment="Top" Width="330" Value="49" BorderBrush="{x:Null}" Background="#3F333333" Style="{DynamicResource ProgressBarStyle1}" Foreground="#FF85B6C9" Margin="0,21,0,0"/>
+                <Label Content="Label" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="228" FontSize="10" Padding="5,3,5,5" Foreground="White" Margin="0,2,0,0"/>
+                <Label Content="Label" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="101" FontSize="10" Padding="5,3,5,5" Foreground="White" HorizontalContentAlignment="Right" Margin="228,2,0,0"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
