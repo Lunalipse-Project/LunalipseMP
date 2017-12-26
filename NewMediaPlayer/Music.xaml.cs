@@ -12,6 +12,7 @@ using System.Windows.Media;
 using LunaNetCore.Bodies;
 using NetEaseHijacker;
 using NetEaseHijacker.Types;
+using I18N;
 
 namespace NewMediaPlayer
 {
@@ -21,17 +22,14 @@ namespace NewMediaPlayer
     public partial class Music : Window
     {
         ResourceHolder RH;
+        PageLang PL;
         SearchType MODE = SearchType.SONGS;
         string MusicN_For_LRC = "", kw = "";
         bool reset = true;
         int totalPages = 1, curPage = 0, offset = 0;
         Hijack hj;
 
-        string[] MODE_SET = new string[]
-        {
-            "单    曲",
-            "歌    词",
-        };
+        string[] MODE_SET = new string[2];
         
         ObservableCollection<MusicInfo> list = new ObservableCollection<MusicInfo>();
         public Music()
@@ -39,9 +37,12 @@ namespace NewMediaPlayer
             InitializeComponent();
             hj = new Hijack();
             RH = ResourceHolder.INSTANCE;
+            PL = I18NHelper.INSTANCE.GetReferrence("OLmusic");
             logo.Background = new ImageBrush(RH.getImage("LunaCM"));
             bgi.Background = new ImageBrush(RH.getImage("Luna_in_space"));
-
+            MODE_SET[0] = PL.GetContent("smode_M");
+            MODE_SET[1] = PL.GetContent("smode_L");
+            search.Content = PL.GetContent("search");
             hj.E_Responded((par1, par2) =>
             {
                 Dispatcher.Invoke(new Action(() => loading.Visibility = Visibility.Hidden));

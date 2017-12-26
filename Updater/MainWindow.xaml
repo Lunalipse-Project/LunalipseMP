@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Updater"
         mc:Ignorable="d"
-        AllowsTransparency="True"
-        Title="MainWindow" Height="101.093" Width="488.866" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
+        AllowsTransparency="True" x:Name="Mainwindow"
+        Title="MainWindow" Height="101" Width="488" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,9 +16,19 @@
                 <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="0" To="1" Storyboard.TargetName="PrgCnt"></DoubleAnimation>
                 <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="1" To="0" Storyboard.TargetName="title"></DoubleAnimation>
             </Storyboard>
+            <Storyboard x:Key="exchangeR">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="1" To="0" Storyboard.TargetName="PrgCnt"></DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="0" To="1" Storyboard.TargetName="title"></DoubleAnimation>
+            </Storyboard>
             <Storyboard x:Key="rotate">
                 <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
                                  To="-360" Duration="0:0:1" RepeatBehavior="Forever" Storyboard.TargetName="Celestia"/>
+            </Storyboard>
+            <Storyboard x:Key="resizeToSmall">
+                <DoubleAnimation Storyboard.TargetProperty="(Window.Height)" Duration="0:0:2" From="401" To="101" Storyboard.TargetName="Mainwindow"></DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="resizeToLarge">
+                <DoubleAnimation Storyboard.TargetProperty="(Window.Height)" Duration="0:0:2" To="401" From="101" Storyboard.TargetName="Mainwindow"></DoubleAnimation>
             </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
@@ -34,8 +44,7 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.75" ShadowDepth="0"/>
             </Border.Effect>
-            <Label x:Name="title" Content="Label" HorizontalAlignment="Left" Height="49" Margin="74,12,0,0" VerticalAlignment="Top" Width="151" FontSize="24" Foreground="White"/>
-
+            <Label Opacity="0" x:Name="title" Content="Lunalipse" HorizontalAlignment="Left" Height="55" Margin="71,0,0,0" VerticalAlignment="Top" Width="267" FontSize="48" Foreground="White" FontFamily="/Updater;component/res/#Equestria"/>
         </Border>
         <Grid>
             <Ellipse Cursor="Hand" Fill="#B2FF2300" Height="23" VerticalAlignment="Top" MouseDown="EllipseClk" Margin="0,19,19.4,0" HorizontalAlignment="Right" Width="23"/>
@@ -44,10 +53,10 @@
                     <RotateTransform/>
                 </Image.RenderTransform>
             </Image>
-            <Grid x:Name="PrgCnt" Width="auto" Height="auto" Margin="86,36,73.8,39.8" Opacity="0">
-                <ProgressBar HorizontalAlignment="Left" Height="5" VerticalAlignment="Top" Width="330" Value="49" BorderBrush="{x:Null}" Background="#3F333333" Style="{DynamicResource ProgressBarStyle1}" Foreground="#FF85B6C9" Margin="0,21,0,0"/>
-                <Label Content="Label" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="228" FontSize="10" Padding="5,3,5,5" Foreground="White" Margin="0,2,0,0"/>
-                <Label Content="Label" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="101" FontSize="10" Padding="5,3,5,5" Foreground="White" HorizontalContentAlignment="Right" Margin="228,2,0,0"/>
+            <Grid x:Name="PrgCnt" Width="auto" Height="auto" Margin="86,36,73.8,39.8" Opacity="1">
+                <ProgressBar HorizontalAlignment="Left" Height="5" VerticalAlignment="Top" Width="330" Value="49" BorderBrush="{x:Null}" Background="#3F333333" Style="{DynamicResource ProgressBarStyle1}" Foreground="#FF85B6C9" Margin="0,21,0,0" IsIndeterminate="True"/>
+                <Label x:Name="status" Content="" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="228" FontSize="10" Padding="5,3,5,5" Foreground="White" Margin="0,2,0,0"/>
+                <Label x:Name="percent" Content="" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="101" FontSize="10" Padding="5,3,5,5" Foreground="White" HorizontalContentAlignment="Right" Margin="228,2,0,0"/>
             </Grid>
         </Grid>
     </Grid>

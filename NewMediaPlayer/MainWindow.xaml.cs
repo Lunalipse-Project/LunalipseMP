@@ -19,6 +19,7 @@ using System.Threading;
 using NewMediaPlayer.Shell;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
+using NewMediaPlayer.ui.Performance;
 
 namespace NewMediaPlayer
 {
@@ -38,6 +39,7 @@ namespace NewMediaPlayer
         PluginHelper PH;
         LunalipseInterface LI;
         ResourceHolder RH;
+        BgManager bgM;
 
         LinearGradientBrush LGB;
         ImageBrush ImB;
@@ -57,6 +59,7 @@ namespace NewMediaPlayer
             InitializeComponent();
             PH = PluginHelper.INSTANCE;
             RH = ResourceHolder.INSTANCE;
+            bgM = new BgManager(AppDomain.CurrentDomain.BaseDirectory+"/background");
             LI = LunalipseInterface.INSTANCE;
             LogFile.WriteLog("INFO", "Initialize Lunalipse sound component completely.");
             ps = new Sound.PlaySound(Dur, curr, fftContainer, new System.Drawing.Size(512, 512));

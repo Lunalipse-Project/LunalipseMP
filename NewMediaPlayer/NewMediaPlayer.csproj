@@ -192,6 +192,9 @@
     <Compile Include="ui\Dlg_PN.xaml.cs">
       <DependentUpon>Dlg_PN.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\FeedBack.xaml.cs">
+      <DependentUpon>FeedBack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\Heartbeater\Beater.cs" />
     <Compile Include="ui\Heartbeater\Heart.cs" />
     <Compile Include="ui\Heartbeater\Pacer.cs" />
@@ -210,6 +213,7 @@
     <Compile Include="ui\OLmusicLib.xaml.cs">
       <DependentUpon>OLmusicLib.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\Performance\BgManager.cs" />
     <Compile Include="ui\PluginManager.xaml.cs">
       <DependentUpon>PluginManager.xaml</DependentUpon>
     </Compile>
@@ -276,6 +280,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ui\Dlg_PN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\FeedBack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

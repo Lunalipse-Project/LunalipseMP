@@ -19,6 +19,7 @@ namespace NewMediaPlayer
     {
         public bool draged = false;
         Pacer p = Pacer.INSTANCE;
+        int flag = 0;
 
         public void ApplyingUIText()
         {
@@ -231,6 +232,8 @@ namespace NewMediaPlayer
 
         //进入私密模式
         BlurEffect bf = new BlurEffect();
+        private bool NO_ALBG = true;
+
         private void InitialPrivateMode()
         {
             bf.KernelType = KernelType.Gaussian;
@@ -277,18 +280,39 @@ namespace NewMediaPlayer
                 KeepListenUntilRelease = false,
                 keyStroked=new Behavior(() =>
                 {
-                    if (!global.ALBUM_BG)
+                    if (!global.ALBUM_BG || NO_ALBG)
                     {
-                        if (!changed)
+                        switch(flag)
                         {
-                            defult = bgHoder.Background = ImB;
-                            changed = true;
+                            case 0:
+                                defult = bgHoder.Background = ImB;
+                                break;
+                            case 1:
+                                defult = bgHoder.Background = LGB;
+                                break;
+                            default:
+                                ImageBrush b = new ImageBrush(bgM.GetBackground(flag - 2));
+                                if (b.ImageSource == null)
+                                {
+                                    flag = -1;
+                                }
+                                else
+                                {
+                                    defult = bgHoder.Background = b;
+                                }
+                                break;
                         }
-                        else
-                        {
-                            defult = bgHoder.Background = LGB;
-                            changed = false;
-                        }
+                        flag++;
+                        //if (!changed)
+                        //{
+                        //    defult = bgHoder.Background = ImB;
+                        //    changed = true;
+                        //}
+                        //else
+                        //{
+                        //    defult = bgHoder.Background = LGB;
+                        //    changed = false;
+                        //}
                     }
                     
                 })

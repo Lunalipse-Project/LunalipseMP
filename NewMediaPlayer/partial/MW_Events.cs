@@ -266,12 +266,14 @@ namespace NewMediaPlayer
                 {
                     Album.Content = m.Al;
                     artist.Content = m.artist;
+                    NO_ALBG = (m.AlPic == null);
                     bgHoder.Background = global.ALBUM_BG ? m.AlPic != null ? new ImageBrush(m.AlPic) : defult : defult;
                 }
                 else
                 {
                     Album.Content = artist.Content = "";
                     bgHoder.Background = defult;
+                    NO_ALBG = true;
                 }
             };
 

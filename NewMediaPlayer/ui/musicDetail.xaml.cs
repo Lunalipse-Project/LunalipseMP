@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using NewMediaPlayer.Generic;
 using System.Threading.Tasks;
+using I18N;
 
 namespace NewMediaPlayer.ui
 {
@@ -17,15 +18,26 @@ namespace NewMediaPlayer.ui
     {
         Downloader der;
         SDetail md;
+        PageLang PL;
         string ChoosenUrl = "";
         bool firstOpen = false;
         Hijack hj;
-        string ext;
+        string ext,downloading;
         public musicDetail(SDetail _md)
         {
             InitializeComponent();
             prev.LoadedBehavior = MediaState.Play;
             prev.UnloadedBehavior = MediaState.Stop;
+            PL = I18NHelper.INSTANCE.GetReferrence("MusicDetail");
+            fmt.Content = PL.GetContent("extend");
+            Dur.Content = PL.GetContent("duration");
+            art.Content = PL.GetContent("singer");
+            foreach(char i in "lmh")
+            {
+                if (FindName(i.ToString()) is Button b) b.Content = PL.GetContent(i.ToString().ToUpper());
+            }
+            prgV.Content = PL.GetContent("await");
+            downloading = PL.GetContent("Downloading");
             hj = new Hijack();
             hj.E_TimeOut(() => MessageBox.Show("无网络连接", "错误", MessageBoxButton.OK, MessageBoxImage.Error));
             hj.E_Responded((x, y) =>
@@ -66,7 +78,7 @@ namespace NewMediaPlayer.ui
                 Dispatcher.Invoke(new Action(() =>
                 {
                     t = Utils.SizeCalc(x);
-                    status.Content = "正在下载：0MB / " + t;
+                    status.Content = downloading+"0MB / " + t;
                     total = x;
                     prgs.Maximum = x;
                 }));
@@ -93,7 +105,7 @@ namespace NewMediaPlayer.ui
                 Dispatcher.Invoke(new Action(() =>
                 {
                     prec = x / total * 100d;
-                    status.Content = "正在下载：" + Utils.SizeCalc(x) + " / " + t;
+                    status.Content = downloading + Utils.SizeCalc(x) + " / " + t;
                     prgV.Content = decimal.Round(new decimal(prec), 1).ToString() + "%";
                     prgs.Value = x;
                 }));

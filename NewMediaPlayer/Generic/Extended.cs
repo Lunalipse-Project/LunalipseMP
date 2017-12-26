@@ -68,6 +68,16 @@ namespace NewMediaPlayer.Generic
             }
             return default(T);
         }
+
+        public static bool Contains<T>(this T[] a, Func<T, bool> condition)
+        {
+            foreach (T t in a)
+            {
+                if (condition(t))
+                    return true;
+            }
+            return false;
+        }
     }
 
     public enum FType

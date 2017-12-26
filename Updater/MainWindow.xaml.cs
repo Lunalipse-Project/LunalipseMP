@@ -39,6 +39,7 @@ namespace Updater
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             (Resources["rotate"] as Storyboard).Begin();
+            //(Resources["exchange"] as Storyboard).Begin();
         }
     }
 }

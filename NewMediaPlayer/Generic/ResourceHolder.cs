@@ -48,13 +48,18 @@ namespace NewMediaPlayer.Generic
             Marshal.FreeCoTaskMem(fntp);
         }
 
-        public void AddImage(Stream imgstream,string key)
+        public bool AddImage(Stream imgstream,string key)
         {
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
             bi.StreamSource = imgstream;
             bi.EndInit();
-            IMAGES.Add(key, bi);
+            return IMAGES.Add4nRep(key, bi);
+        }
+
+        public bool AddImage(BitmapImage bi, string key)
+        {
+            return IMAGES.Add4nRep(key, bi);
         }
 
         public FontFamily getFont(int i)
@@ -66,6 +71,11 @@ namespace NewMediaPlayer.Generic
         public BitmapImage getImage(string key)
         {
             return IMAGES[key];
+        }
+
+        public bool Exist(string key)
+        {
+            return IMAGES.ContainsKey(key);
         }
     }
 }
